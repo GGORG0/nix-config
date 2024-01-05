@@ -42,11 +42,17 @@
   environment.gnome.excludePackages =
     (with pkgs; [
       gnome-tour
+      snapshot
     ])
     ++ (with pkgs.gnome; [
-      cheese # webcam tool
-      epiphany # web browser
-      geary # email reader
+      cheese
+      epiphany
+      geary
+      evolution
+      simple-scan
+      gnome-logs
+      gnome-maps
+      gnome-weather
     ]);
 
   environment.systemPackages =
