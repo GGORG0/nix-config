@@ -11,7 +11,7 @@
     };
 
     Service = {
-      ExecStart = "${lib.getExe' pkgs.polkit_gnome "polkit-gnome-authentication-agent-1"}"; # <-- this line
+      ExecStart = "${lib.getExe' pkgs.polkit_gnome "polkit-gnome-authentication-agent-1"}";
       Restart = "on-failure";
     };
 
