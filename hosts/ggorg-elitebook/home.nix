@@ -12,6 +12,8 @@
     ../../modules/home-manager/rice/default.nix # My Hyprland rice
 
     ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
+
+    ../../modules/home-manager/syncthing.nix # File sync
   ];
 
   # --------------------

@@ -10,6 +10,8 @@
     ../../modules/home-manager/common.nix # General shared configuration
 
     ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
+
+    ../../modules/home-manager/syncthing.nix # File sync
   ];
 
   # --------------------
