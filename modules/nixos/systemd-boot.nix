@@ -15,4 +15,6 @@
     };
     efi.canTouchEfiVariables = true;
   };
+  boot.initrd.systemd.enable = true; # Mainly for TPM2 LUKS locking
+  environment.systemPackages = [pkgs.tpm2-tss];
 }
