@@ -15,6 +15,11 @@
     };
     efi.canTouchEfiVariables = true;
   };
-  boot.initrd.systemd.enable = true; # Mainly for TPM2 LUKS locking
+
+  # TPM2 LUKS auto-unlocking
+  boot.initrd.systemd.enable = true;
   environment.systemPackages = [pkgs.tpm2-tss];
+
+  # enables the SysRq key in case of system freezes
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 }
