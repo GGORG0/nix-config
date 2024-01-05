@@ -23,10 +23,7 @@
   ];
 
   # LUKS encryption
-  boot.initrd.luks.devices."luks-97201d96-c267-4dd0-be74-006d78e0ec1f" = {
-    device = "/dev/disk/by-uuid/97201d96-c267-4dd0-be74-006d78e0ec1f";
-    crypttabExtraOpts = ["tpm2-device=auto"];
-  };
+  boot.initrd.luks.devices."luks-97201d96-c267-4dd0-be74-006d78e0ec1f".device = "/dev/disk/by-uuid/97201d96-c267-4dd0-be74-006d78e0ec1f";
 
   # Secure boot via Lanzaboote
   # Lanzaboote currently replaces the systemd-boot module.
@@ -42,14 +39,6 @@
 
   # Hostname
   networking.hostName = "ggorg-x1tablet";
-
-  # Enable automatic login for the user
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "${username}";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
