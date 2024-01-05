@@ -23,7 +23,10 @@
   ];
 
   # LUKS encryption
-  boot.initrd.luks.devices."luks-97201d96-c267-4dd0-be74-006d78e0ec1f".device = "/dev/disk/by-uuid/97201d96-c267-4dd0-be74-006d78e0ec1f";
+  boot.initrd.luks.devices."luks-97201d96-c267-4dd0-be74-006d78e0ec1f" = {
+    device = "/dev/disk/by-uuid/97201d96-c267-4dd0-be74-006d78e0ec1f";
+    crypttabExtraOpts = ["tpm2-device=auto"];
+  };
 
   # Secure boot via Lanzaboote
   # Lanzaboote currently replaces the systemd-boot module.
