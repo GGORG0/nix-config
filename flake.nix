@@ -33,7 +33,7 @@
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
     nixosConfigurations = {
-      # My laptop
+      # My HP EliteBook 650 G9
       ggorg-elitebook = nixpkgs.lib.nixosSystem {
         inherit system;
 
@@ -48,6 +48,28 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users."${username}" = import ./hosts/ggorg-elitebook/home.nix;
+
+              extraSpecialArgs = {inherit inputs system username stateVersion;};
+            };
+          }
+        ];
+      };
+
+      # My ThinkPad X1 Tablet 2nd gen
+      ggorg-x1tablet = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {inherit inputs system username stateVersion;};
+
+        modules = [
+          ./hosts/ggorg-x1tablet/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."${username}" = import ./hosts/ggorg-x1tablet/home.nix;
 
               extraSpecialArgs = {inherit inputs system username stateVersion;};
             };
