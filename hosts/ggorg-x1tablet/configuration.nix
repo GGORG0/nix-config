@@ -38,6 +38,36 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Remove GNOME bloatware
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-tour
+    ])
+    ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      epiphany # web browser
+      geary # email reader
+    ]);
+
+  environment.systemPackages =
+    (with pkgs; [
+      qt5.qtwayland # Required for Qt5 on Wayland
+      gnome.gnome-tweaks # The classic :)
+    ])
+    ++ (with pkgs.gnomeExtensions; [
+      # GNOME Extensions
+      appindicator
+      gsconnect
+      improved-osk
+      always-show-titles-in-overview
+      hibernate-status-button
+      alphabetical-app-grid
+      custom-hot-corners-extended
+    ]);
+
+  # Fix GNOME stuff ig (for appindicator)
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon];
+
   # OpenSSH daemon TODO: move to module
   services.openssh.enable = true;
 
@@ -55,12 +85,9 @@
   hardware.sensor.iio.enable = true;
 
   services.udev.extraRules = ''
-ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="60a3", ATTR{power/wakeup}="disabled"
-'';
+    ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="60a3", ATTR{power/wakeup}="disabled"
+  '';
 
   # Misc
   environment.sessionVariables."NIXOS_OZONE_WL" = "1";
-  environment.systemPackages = with pkgs; [
-    qt5.qtwayland # Required for Qt5 on Wayland
-  ];
 }
