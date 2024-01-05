@@ -48,7 +48,6 @@
       cheese
       epiphany
       geary
-      evolution
       simple-scan
       gnome-logs
       gnome-maps
