@@ -5,7 +5,7 @@
   ...
 }: {
   environment.systemPackages = [pkgs.catppuccin-sddm-corners];
-  services.xserver.displayManager.sddm.sddm = {
+  services.xserver.displayManager.sddm = {
     enable = true;
     theme = "catppuccin-sddm-corners";
   };
