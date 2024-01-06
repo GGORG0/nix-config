@@ -3,12 +3,10 @@
   lib,
   config,
   username,
-  inputs,
   ...
 }: {
   imports = [
     ./hardware-configuration.nix
-    inputs.lanzaboote.nixosModules.lanzaboote
 
     ../../modules/nixos/nix-conf.nix # Nix package manager configuration
     ../../modules/nixos/locale.nix # Timezone + locale
@@ -24,18 +22,6 @@
 
   # LUKS encryption
   boot.initrd.luks.devices."luks-97201d96-c267-4dd0-be74-006d78e0ec1f".device = "/dev/disk/by-uuid/97201d96-c267-4dd0-be74-006d78e0ec1f";
-
-  # Secure boot via Lanzaboote
-  # Lanzaboote currently replaces the systemd-boot module.
-  # This setting is usually set to true in configuration.nix
-  # generated at installation time. So we force it to false
-  # for now.
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
 
   # Hostname
   networking.hostName = "ggorg-x1tablet";
@@ -64,8 +50,6 @@
     (with pkgs; [
       qt5.qtwayland # Required for Qt5 on Wayland
       gnome.gnome-tweaks # The classic :)
-
-      sbctl # For secure boot key management
     ])
     ++ (with pkgs.gnomeExtensions; [
       # GNOME Extensions

@@ -32,10 +32,6 @@
   # Hostname
   networking.hostName = "ggorg-elitebook";
 
-  # Enable automatic login for the user
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "${username}";
-
   # OpenSSH daemon TODO: move to module
   services.openssh.enable = true;
 

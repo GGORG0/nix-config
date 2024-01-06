@@ -6,6 +6,10 @@
 }:
 # System config for Hyprland rice
 {
+  imports = [
+    ./sddm.nix
+  ];
+
   # Enable the Hyprland window manager
   programs.hyprland.enable = true;
 
