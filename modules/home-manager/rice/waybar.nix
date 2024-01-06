@@ -227,6 +227,7 @@
       #backlight,
       #battery,
       #custom-dunst,
+      #custom-audio_idle_inhibitor,
       #idle_inhibitor,
       #tray {
         background-color: @surface0;
