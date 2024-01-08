@@ -9,6 +9,7 @@
     ./dunst.nix
     ./hyprland.nix
     ./hyprpaper.nix
+    ./kdeconnect.nix
     ./kitty.nix
     ./polkit.nix
     ./rofi.nix
