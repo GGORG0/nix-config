@@ -9,6 +9,18 @@
     platformTheme = "gtk";
   };
 
+  home.packages = with pkgs; [
+    catppuccin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
+  ];
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+    [General]
+    theme=Catppuccin-Mocha-Blue
+  '';
+
+  home.sessionVariables.QT_STYLE_OVERRIDE = "kvantum";
+
   gtk = {
     enable = true;
     theme = {
@@ -19,12 +31,6 @@
         variant = "mocha";
       };
     };
-
-    # TODO: fix cursor theme
-    # cursorTheme = {
-    #   name = "Catppuccin-Mocha-Dark-Cursors";
-    #   package = pkgs.catppuccin-cursors.mochaDark;
-    # };
 
     iconTheme = {
       name = "Papirus";

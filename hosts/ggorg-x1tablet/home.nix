@@ -9,6 +9,8 @@
     ../../modules/home-manager/nix-conf.nix # Nix package manager configuration
     ../../modules/home-manager/common.nix # General shared configuration
 
+    ../../modules/home-manager/cursor.nix # Bibata cursor my beloved
+
     ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
 
     ../../modules/home-manager/syncthing.nix # File sync

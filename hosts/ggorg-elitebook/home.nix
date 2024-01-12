@@ -10,6 +10,7 @@
     ../../modules/home-manager/common.nix # General shared configuration
 
     ../../modules/home-manager/rice/default.nix # My Hyprland rice
+    ../../modules/home-manager/cursor.nix # Bibata cursor my beloved
 
     ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
 
