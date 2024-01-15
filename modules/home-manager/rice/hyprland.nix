@@ -97,9 +97,9 @@
 
           # Rofi
           "${mod}, R, exec, ${lib.getExe config.programs.rofi.finalPackage} -show drun"
-          "${mod}, period, exec, ${lib.getExe config.programs.rofi.finalPackage} -modi emoji -show emoji"
-          "${mod}, C, exec, ${lib.getExe config.programs.rofi.finalPackage} -modi calc -show calc -no-show-match -no-sort"
-          "${mod}, escape, exec, ${lib.getExe config.programs.rofi.finalPackage} -modi power-menu -show power-menu"
+          "${mod}, period, exec, ${lib.getExe config.programs.rofi.finalPackage} -show emoji"
+          "${mod}, C, exec, ${lib.getExe config.programs.rofi.finalPackage} -show calc -no-show-match -no-sort"
+          "${mod}, escape, exec, ${lib.getExe config.programs.rofi.finalPackage} -show power-menu"
           "${mod}, V, exec, ${lib.getExe pkgs.clipman} pick -t CUSTOM -T \"${lib.getExe config.programs.rofi.finalPackage} -dmenu -p '   Clipboard '\""
 
           # Dunst do not disturb toggle

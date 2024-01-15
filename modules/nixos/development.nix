@@ -22,6 +22,10 @@
         toolchain.default.override {
           extensions = ["rust-src" "rust-analyzer"];
         }))
+
+    # Python
+    python311Full
+    python311Packages.ipython
   ];
 
   # Android Debug Bridge

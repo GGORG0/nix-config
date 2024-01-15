@@ -28,6 +28,7 @@
 
       # Gaming
       prismlauncher
+      mindustry
 
       # Programming
       android-studio
