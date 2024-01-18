@@ -11,15 +11,15 @@
 
   xdg.configFile = let
     catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-      accent = "Lavender";
+      accent = "Blue";
       variant = "Mocha";
     };
   in {
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
       General.theme = "Catppuccin-Mocha-Blue";
     };
-    "Kvantum/Catppuccin-Mocha-Blue.kvconfig".source = "${catppuccin-kvantum}/kde/kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig";
-    "Kvantum/Catppuccin-Mocha-Blue.svg".source = "${catppuccin-kvantum}/kde/kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg";
+    "Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig";
+    "Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg";
   };
 
   home.sessionVariables.QT_STYLE_OVERRIDE = "kvantum";
