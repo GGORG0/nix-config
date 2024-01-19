@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +27,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     ...
   } @ inputs: let
@@ -33,6 +36,11 @@
     username = "ggorg";
 
     stateVersion = "23.11";
+
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     # Nix language file formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
@@ -42,7 +50,7 @@
       ggorg-elitebook = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        specialArgs = {inherit inputs system username stateVersion;};
+        specialArgs = {inherit pkgs-stable inputs system username stateVersion;};
 
         modules = [
           ./hosts/ggorg-elitebook/configuration.nix
@@ -54,7 +62,7 @@
               useUserPackages = true;
               users."${username}" = import ./hosts/ggorg-elitebook/home.nix;
 
-              extraSpecialArgs = {inherit inputs system username stateVersion;};
+              extraSpecialArgs = {inherit pkgs-stable inputs system username stateVersion;};
             };
           }
         ];

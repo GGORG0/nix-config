@@ -3,6 +3,7 @@
   lib,
   config,
   pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [
@@ -21,9 +22,9 @@
 
   home = {
     # TODO: move to module
-    packages = with pkgs; [
+    packages = (with pkgs; [
       # Messengers
-      armcord
+      # armcord
       telegram-desktop
 
       # Gaming
@@ -41,7 +42,9 @@
       qalculate-gtk
 
       rnote
-    ];
+    ]) ++ (with pkgs-stable; [
+      armcord # fix for installing ArmCord from stable repo to avoid https://snips.sh/f/bmCVQ3x63v caused by Electron 28
+    ]);
   };
 
   # --------------------
