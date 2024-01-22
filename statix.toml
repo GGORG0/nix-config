@@ -1,0 +1,6 @@
+nix_version = '2.4'
+ignore = ['.direnv', 'hardware-configuration.nix']
+
+disabled = [
+  'repeated_keys'
+]

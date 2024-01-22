@@ -1,7 +1,4 @@
 {
-  inputs,
-  lib,
-  config,
   pkgs,
   pkgs-stable,
   ...
@@ -21,25 +18,27 @@
 
   home = {
     # TODO: move to module
-    packages = (with pkgs; [
-      # Messengers
-      # armcord
-      telegram-desktop
+    packages =
+      (with pkgs; [
+        # Messengers
+        # armcord
+        telegram-desktop
 
-      # Gaming
-      prismlauncher
+        # Gaming
+        prismlauncher
 
-      # Misc
-      libreoffice-fresh
-      hunspell
-      hunspellDicts.pl-pl
+        # Misc
+        libreoffice-fresh
+        hunspell
+        hunspellDicts.pl-pl
 
-      qalculate-gtk
+        qalculate-gtk
 
-      rnote
-    ]) ++ (with pkgs-stable; [
-      armcord # fix for installing ArmCord from stable repo to avoid https://snips.sh/f/bmCVQ3x63v caused by Electron 28
-    ]);
+        rnote
+      ])
+      ++ (with pkgs-stable; [
+        armcord # fix for installing ArmCord from stable repo to avoid https://snips.sh/f/bmCVQ3x63v caused by Electron 28
+      ]);
   };
 
   # --------------------

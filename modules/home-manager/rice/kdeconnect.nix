@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+_: {
   services.kdeconnect = {
     enable = true;
     indicator = true;

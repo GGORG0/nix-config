@@ -22,6 +22,11 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -29,6 +34,7 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
+    pre-commit-hooks,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -36,6 +42,11 @@
     username = "ggorg";
 
     stateVersion = "23.11";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
     pkgs-stable = import nixpkgs-stable {
       inherit system;
@@ -45,49 +56,37 @@
     # Nix language file formatter
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
 
+    # Pre-commit hooks
+    checks.${system}.default = pre-commit-hooks.lib.${system}.run {
+      src = ./.;
+      hooks = {
+        alejandra.enable = true;
+        statix.enable = true;
+        deadnix.enable = true;
+      };
+    };
+    devShells.${system}.default = nixpkgs.legacyPackages.${system}.mkShell {
+      inherit (self.checks.${system}.default) shellHook;
+
+      packages = with pkgs; [
+        alejandra # formatter
+        statix # linter
+        deadnix # scan for dead code
+        nil # language server
+      ];
+    };
+
     nixosConfigurations = {
       # My HP EliteBook 650 G9
-      ggorg-elitebook = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        specialArgs = {inherit pkgs-stable inputs system username stateVersion;};
-
-        modules = [
-          ./hosts/ggorg-elitebook/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users."${username}" = import ./hosts/ggorg-elitebook/home.nix;
-
-              extraSpecialArgs = {inherit pkgs-stable inputs system username stateVersion;};
-            };
-          }
-        ];
+      ggorg-elitebook = import ./util/nixosSystem.nix {
+        inherit nixpkgs home-manager pkgs-stable inputs system username stateVersion;
+        hostname = "ggorg-elitebook";
       };
 
       # My ThinkPad X1 Tablet 2nd gen
-      ggorg-x1tablet = nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        specialArgs = {inherit inputs system username stateVersion;};
-
-        modules = [
-          ./hosts/ggorg-x1tablet/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users."${username}" = import ./hosts/ggorg-x1tablet/home.nix;
-
-              extraSpecialArgs = {inherit inputs system username stateVersion;};
-            };
-          }
-        ];
+      ggorg-x1tablet = import ./util/nixosSystem.nix {
+        inherit nixpkgs home-manager pkgs-stable inputs system username stateVersion;
+        hostname = "ggorg-x1tablet";
       };
     };
   };

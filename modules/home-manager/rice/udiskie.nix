@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+_: {
   services.udiskie = {
     enable = true;
     tray = "auto";

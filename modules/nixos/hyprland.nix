@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}:
+{pkgs, ...}:
 # System config for Hyprland rice
 {
   imports = [

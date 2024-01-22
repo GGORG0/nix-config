@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  username,
-  ...
-}: {
+{username, ...}: {
   users.users."${username}" = {
     isNormalUser = true;
     description = "GGORG";

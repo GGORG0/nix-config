@@ -6,3 +6,6 @@ tmp/
 # Ignore build outputs from performing a nix-build or `nix build` command
 result
 result-*
+
+# pre-commit-hooks.nix
+/.pre-commit-config.yaml

@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+_: {
   # Set your time zone
   time.timeZone = "Europe/Warsaw";
 

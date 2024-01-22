@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     theme = "Catppuccin-Mocha";

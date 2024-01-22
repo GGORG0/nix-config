@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+_: {
   services.wlsunset = {
     enable = true;
     systemdTarget = (import ./systemd-bp.nix).target;

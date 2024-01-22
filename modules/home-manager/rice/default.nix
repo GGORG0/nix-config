@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   imports = [
     ./app-theme.nix
     ./dunst.nix

@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     catppuccin-sddm-corners
     libsForQt5.qt5.qtsvg
@@ -14,5 +9,6 @@
   services.xserver.displayManager.sddm = {
     enable = true;
     theme = "catppuccin-sddm-corners";
+    wayland.enable = true;
   };
 }
