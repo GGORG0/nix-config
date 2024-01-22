@@ -26,8 +26,11 @@
 
   environment.systemPackages = with pkgs; [
     libnotify # Required for dunst
+    qt5.qtwayland # Required for Qt5 on Wayland
+
     cinnamon.nemo-with-extensions
     gnome.file-roller
-    qt5.qtwayland # Required for Qt5 on Wayland
+    nsxiv
+    mpv
   ];
 }
