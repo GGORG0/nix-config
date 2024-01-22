@@ -18,5 +18,9 @@
       tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
       window_padding_width = "5";
     };
+    shellIntegration = {
+      mode = "enabled";
+      enableZshIntegration = true;
+    };
   };
 }

@@ -50,5 +50,12 @@
     usbutils # lsusb
   ];
 
-  programs.git.enable = true;
+  programs = {
+    git.enable = true;
+    zsh.enable = true;
+  };
+
+  # Not really a package, but fixes ZSH completion for system packages
+  # See home-manager programs.zsh.enableCompletion
+  environment.pathsToLink = ["/share/zsh"];
 }

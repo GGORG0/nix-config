@@ -3,6 +3,10 @@
   stateVersion,
   ...
 }: {
+  imports = [
+    ./zsh.nix
+  ];
+
   home = {
     inherit username;
     homeDirectory = "/home/${username}";

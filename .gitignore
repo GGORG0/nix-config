@@ -9,3 +9,6 @@ result-*
 
 # pre-commit-hooks.nix
 /.pre-commit-config.yaml
+
+# nix-direnv
+.direnv/
