@@ -129,6 +129,7 @@
 
 
 ;; LSP Inline type hints
-(after! lsp-mode
- (setq lsp-inlay-hint-enable t)
- (lsp-inlay-hints-mode))
+;; They are broken again :/
+;;(after! lsp-mode
+;; (setq lsp-inlay-hint-enable t)
+;; (lsp-inlay-hints-mode))
