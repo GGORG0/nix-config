@@ -12,6 +12,8 @@
     ../../modules/nixos/user.nix # The main user account
     ../../modules/nixos/common-pkgs.nix # My frequently used command-line tools
     ../../modules/nixos/gui.nix # Common GUI, fonts and sound configuration
+
+    ../../modules/nixos/development.nix # Development & compilation tools
   ];
 
   # LUKS encryption
