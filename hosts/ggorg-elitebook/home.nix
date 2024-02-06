@@ -29,13 +29,11 @@
         prismlauncher
         mindustry
 
-        # Programming
-        android-studio
-
         # Misc
         libreoffice-fresh
         hunspell
         hunspellDicts.pl-pl
+        kicad
 
         qalculate-gtk
 
