@@ -6,7 +6,10 @@
   users.users."${username}" = {
     isNormalUser = true;
     description = "GGORG";
-    extraGroups = ["wheel"];
+    extraGroups = [
+      "wheel"
+      "video" # for Waybar backlight permission
+    ];
     shell = pkgs.zsh;
   };
 }

@@ -14,9 +14,6 @@
   # Fix for swaylock with Hyprland
   security.pam.services.swaylock = {};
 
-  # Permissions for `light` (display backlight CLI)
-  programs.light.enable = true;
-
   # Additional configuration for Blueman
   services.blueman.enable = true;
 

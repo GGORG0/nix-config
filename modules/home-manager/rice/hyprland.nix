@@ -174,8 +174,8 @@
       # Brightness and volume keys (we have to use PulseAudio CLI here, because PipeWire doesn't have one :/)
       bindel = [
         # (e) Repeat when held down, (l) works on the lockscreen
-        ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.light} -U 5"
-        ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.light} -A 5"
+        ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
+        ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
 
         ", XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-volume @DEFAULT_SINK@ -5%"
         ", XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-volume @DEFAULT_SINK@ +5%"
