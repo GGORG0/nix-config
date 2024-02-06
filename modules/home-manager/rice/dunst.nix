@@ -37,6 +37,7 @@
         history_length = 50;
 
         browser = "${lib.getExe pkgs.librewolf} -new-tab";
+        dmenu = "${lib.getExe pkgs.rofi-wayland} -dmenu -p dunst:";
 
         corner_radius = 20;
 
