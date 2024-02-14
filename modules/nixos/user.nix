@@ -9,6 +9,7 @@
     extraGroups = [
       "wheel"
       "video" # for Waybar backlight permission
+      "docker"
     ];
     shell = pkgs.zsh;
   };
