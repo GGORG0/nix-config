@@ -29,4 +29,7 @@
   # Android Debug Bridge
   programs.adb.enable = true;
   users.users."${username}".extraGroups = ["adbusers"];
+
+  # Docker
+  virtualisation.docker.enable = true;
 }
