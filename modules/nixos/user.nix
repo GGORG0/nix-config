@@ -10,6 +10,7 @@
       "wheel"
       "video" # for Waybar backlight permission
       "docker"
+      "dialout" # UART USB devices (arduino)
     ];
     shell = pkgs.zsh;
   };
