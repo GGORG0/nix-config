@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ../../modules/home-manager/nix-conf.nix # Nix package manager configuration
     ../../modules/home-manager/common.nix # General shared configuration
@@ -19,29 +15,26 @@
 
   home = {
     # TODO: move to module
-    packages =
-      (with pkgs; [
-        # Messengers
-        # armcord
-        telegram-desktop
+    packages = with pkgs; [
+      # Messengers
+      armcord
+      telegram-desktop
+      element
 
-        # Gaming
-        prismlauncher
-        mindustry
+      # Gaming
+      prismlauncher
+      mindustry
 
-        # Misc
-        libreoffice-fresh
-        hunspell
-        hunspellDicts.pl-pl
-        kicad
+      # Misc
+      libreoffice-fresh
+      hunspell
+      hunspellDicts.pl-pl
+      kicad
 
-        qalculate-gtk
+      qalculate-gtk
 
-        rnote
-      ])
-      ++ (with pkgs-stable; [
-        armcord # fix for installing ArmCord from stable repo to avoid https://snips.sh/f/bmCVQ3x63v caused by Electron 28
-      ]);
+      rnote
+    ];
   };
 
   # --------------------
