@@ -18,7 +18,7 @@
       # Messengers
       armcord
       telegram-desktop
-      element
+      element-desktop-wayland
 
       # Gaming
       prismlauncher
