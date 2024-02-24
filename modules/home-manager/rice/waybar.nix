@@ -254,8 +254,7 @@
         transition: color 0.5s, background-color 0.5s;
       }
 
-      #workspaces button.empty,
-      #workspaces button.persistent {
+      #workspaces button.empty {
         color: @overlay0;
       }
 
