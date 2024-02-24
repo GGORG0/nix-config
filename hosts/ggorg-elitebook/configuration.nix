@@ -38,4 +38,7 @@
     touchpad = true;
     printer = true;
   };
+
+  # Install Steam
+  programs.steam.enable = true;
 }
