@@ -23,6 +23,7 @@
         kb_layout = "pl";
 
         follow_mouse = 1;
+        mouse_refocus = false;
 
         touchpad.natural_scroll = true;
       };
