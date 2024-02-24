@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -41,4 +41,7 @@
 
   # Install Steam
   programs.steam.enable = true;
+  environment.systemPackages = with pkgs; [
+    protontricks
+  ];
 }
