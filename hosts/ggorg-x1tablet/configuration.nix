@@ -81,6 +81,14 @@
     ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="17ef", ATTRS{idProduct}=="60a3", ATTR{power/wakeup}="disabled"
   '';
 
+  # Enable FCC unlocking for the Sierra Wireless EM7455 modem
+  networking.networkmanager.fccUnlockScripts = [
+    rec {
+      id = "1199:9079";
+      path = "${pkgs.modemmanager}/share/ModemManager/fcc-unlock.available.d/${id}";
+    }
+  ];
+
   # Misc
   environment.sessionVariables."NIXOS_OZONE_WL" = "1";
 
