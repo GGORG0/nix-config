@@ -43,5 +43,5 @@
   boot.initrd.systemd.enable = true;
 
   # enables the SysRq key in case of system freezes
-  boot.kernel.sysctl."kernel.sysrq" = 1;
+  boot.kernel.sysctl."kernel.sysrq" = 383;
 }
