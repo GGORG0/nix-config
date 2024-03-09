@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   stateVersion,
   inputs,
   ...
@@ -32,6 +33,9 @@
 
   # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
   environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+
+  # Fix https://github.com/NixOS/nix/issues/9574
+  nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
