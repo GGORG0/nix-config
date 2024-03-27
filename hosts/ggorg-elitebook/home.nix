@@ -7,6 +7,7 @@
     ../../modules/home-manager/cursor.nix # Bibata cursor my beloved
 
     ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
+    ../../modules/home-manager/neovim/default.nix # Neovim config (w/Nixvim)
 
     ../../modules/home-manager/syncthing.nix # File sync
   ];
@@ -25,15 +26,34 @@
       prismlauncher
       mindustry
 
-      # Misc
+      # LibreOffice
       libreoffice-fresh
       hunspell
       hunspellDicts.pl-pl
       kicad
 
+      # Better calculator
       qalculate-gtk
 
+      # YubiKey stuff
+      yubioath-flutter
+      yubikey-manager-qt
+
+      # ProtonMail desktop client (official one requires paid account)
+      electron-mail
+
+      # Hand-written notes
       rnote
+
+      # Screen recording
+      obs-studio
+
+      # Image editing
+      gimp
+      inkscape
+
+      # Screen mirroring from Android
+      scrcpy
     ];
   };
 

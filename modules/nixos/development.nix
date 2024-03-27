@@ -24,6 +24,9 @@
     # Python
     python311Full
     python311Packages.ipython
+
+    # Arduino
+    arduino-ide
   ];
 
   # Android Debug Bridge
