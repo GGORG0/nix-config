@@ -1,19 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ../../modules/home-manager/nix-conf.nix # Nix package manager configuration
-    ../../modules/home-manager/common.nix # General shared configuration
-
-    ../../modules/home-manager/rice/default.nix # My Hyprland rice
-    ../../modules/home-manager/cursor.nix # Bibata cursor my beloved
-
-    ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
-    ../../modules/home-manager/neovim/default.nix # Neovim config (w/Nixvim)
-
-    ../../modules/home-manager/syncthing.nix # File sync
-  ];
-
-  # --------------------
-
   home = {
     # TODO: move to module
     packages = with pkgs; [
@@ -61,4 +46,21 @@
 
   # TODO: move to module
   programs.librewolf.enable = true;
+
+  # --------------------
+
+  ggorg = {
+    doomEmacs.enable = true;
+    hyprland = {
+      enable = true;
+      monitors = [
+        "eDP-1,1920x1080@60,0x0,1"
+      ];
+    };
+    neovim.enable = true;
+    zsh.enable = true;
+    bibataCursor.enable = true;
+    git.enable = true;
+    syncthing.enable = true;
+  };
 }

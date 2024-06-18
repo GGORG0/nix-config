@@ -1,0 +1,80 @@
+.
+├── √ flake.nix
+├── homeModules
+│   ├── √ cursor.nix
+│   ├── √ default.nix
+│   ├── √ doom-emacs
+│   │   ├── √ default.nix
+│   ├── √ git.nix
+│   ├── √ neovim
+│   │   ├── √ default.nix
+│   ├── TODO rice
+│   │   ├── √ applets.nix
+│   │   ├── +/- TODO app-theme.nix
+│   │   ├── √ clipman.nix
+│   │   ├── √ default.nix
+│   │   ├── √ dunst.nix
+│   │   ├── √ hypridle.nix
+│   │   ├── √ hyprland.nix
+│   │   ├── √ hyprlock.nix
+│   │   ├── √ hyprpaper.nix
+│   │   ├── √ kdeconnect.nix
+│   │   ├── √ kitty.nix
+│   │   ├── √ polkit.nix
+│   │   ├── √ rofi.nix
+│   │   ├── √ udiskie.nix
+│   │   ├── √ waybar.nix
+│   │   └── √ wlsunset.nix
+│   ├── √ syncthing.nix
+│   └── √ zsh
+│       ├── √ aliases.nix
+│       ├── √ bat.nix
+│       ├── √ default.nix
+│       ├── √ direnv.nix
+│       ├── √ eza.nix
+│       ├── √ fzf.nix
+│       ├── √ starship.nix
+│       └── √ zoxide.nix
+├── hosts
+│   ├── ggorg-elitebook
+│   │   ├── configuration.nix
+│   │   ├── hardware-configuration.nix
+│   │   └── home.nix
+│   └── ggorg-x1tablet
+│       ├── configuration.nix
+│       ├── hardware-configuration.nix
+│       └── home.nix
+├── nixosModules
+│   ├── √ boot.nix
+│   ├── +/- TODO common-pkgs.nix
+│   ├── √ default.nix
+│   ├── √ development
+│   │   ├── √ adb.nix
+│   │   ├── √ arduino.nix
+│   │   ├── √ cpp.nix
+│   │   ├── √ default.nix
+│   │   ├── +/- TODO docker.nix
+│   │   ├── √ python.nix
+│   │   └── √ rust.nix
+│   ├── √ gui
+│   │   ├── √ default.nix
+│   │   ├── √ fonts.nix
+│   │   ├── √ gnome.nix
+│   │   ├── √ greetd.nix
+│   │   └── √ hyprland.nix
+│   ├── hardware
+│   │   ├── √ bluetooth.nix
+│   │   ├── √ default.nix
+│   │   ├── √ em7455.nix
+│   │   ├── √ hpPrinter.nix
+│   │   ├── √ iioSensors.nix
+│   │   ├── √ libinput.nix
+│   │   ├── √ opengl.nix
+│   │   ├── √ sound.nix
+│   │   └── √ wacom.nix
+│   ├── √ libvirt.nix
+│   ├── √ locale.nix
+│   ├── √ network.nix
+│   ├── √ nix-conf.nix
+│   ├── √ MAYBE TODO VIMJOYER VID steam.nix
+│   └── √ user.nix

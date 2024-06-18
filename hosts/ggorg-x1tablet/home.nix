@@ -1,18 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ../../modules/home-manager/nix-conf.nix # Nix package manager configuration
-    ../../modules/home-manager/common.nix # General shared configuration
-
-    ../../modules/home-manager/cursor.nix # Bibata cursor my beloved
-
-    ../../modules/home-manager/doom-emacs/default.nix # Doom Emacs config
-    ../../modules/home-manager/neovim/default.nix # Neovim config (w/Nixvim)
-
-    ../../modules/home-manager/syncthing.nix # File sync
-  ];
-
-  # --------------------
-
   home = {
     # TODO: move to module
     packages = with pkgs; [
@@ -51,9 +37,10 @@
 
   # --------------------
 
+  # TODO: move to module
   qt = {
     enable = true;
-    platformTheme = "gnome";
+    platformTheme.name = "adwaita";
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
@@ -71,5 +58,16 @@
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
+  # --------------------
+
+  ggorg = {
+    doomEmacs.enable = true;
+    neovim.enable = true;
+    zsh.enable = true;
+    bibataCursor.enable = true;
+    git.enable = true;
+    syncthing.enable = true;
   };
 }
