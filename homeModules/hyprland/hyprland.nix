@@ -91,8 +91,6 @@
           preserve_split = true;
         };
 
-        master.new_is_master = true;
-
         gestures = {
           workspace_swipe = true;
         };
