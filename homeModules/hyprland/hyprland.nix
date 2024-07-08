@@ -41,7 +41,12 @@
           follow_mouse = 1;
           mouse_refocus = false;
 
-          touchpad.natural_scroll = true;
+          touchpad = {
+            natural_scroll = true;
+            clickfinger_behavior = true;
+            drag_lock = true;
+            tap-and-drag = true;
+          };
         };
 
         general = {
@@ -93,9 +98,26 @@
 
         gestures = {
           workspace_swipe = true;
+          workspace_swipe_create_new = false;
+          workspace_swipe_use_r = true;
         };
 
-        misc.disable_hyprland_logo = true; # hyprpaper already covers it
+        misc = {
+          disable_hyprland_logo = true; # hyprpaper covers it
+
+          # just in case hypridle breaks... or something
+          mouse_move_enables_dpms = true;
+          key_press_enables_dpms = true;
+        };
+
+        workspace =
+          builtins.genList (
+            x: (let
+              monitor = builtins.elemAt config.ggorg.hyprland.monitors (builtins.floor (x / 10));
+            in "${toString (x + 1)},monitor:${monitor}")
+          )
+          ((builtins.length config.ggorg.hyprland.monitors)
+            * 10);
 
         bind =
           [
@@ -145,8 +167,8 @@
             "${mod} SHIFT, L, movewindow, r"
 
             # Scroll through workspaces with mod + scroll
-            "${mod}, mouse_down, workspace, e+1"
-            "${mod}, mouse_up, workspace, e-1"
+            "${mod}, mouse_down, workspace, +1"
+            "${mod}, mouse_up, workspace, -1"
 
             # Scroll through workspaces with mod + ALT + h/l
             "${mod} ALT, L, workspace, +1"
@@ -157,7 +179,7 @@
             "${mod} SHIFT, grave, movetoworkspace, special"
           ]
           ++ (
-            # Workspaces
+            # Workspaces on primary monitor
             # binds mod + [SHIFT +] {1..10} to [move to] workspace {1..10}
             builtins.concatLists (builtins.genList (
                 x: let
@@ -171,6 +193,22 @@
                 ]
               )
               10)
+          )
+          ++ (
+            # Workspaces on secondary monitor
+            # binds mod + ALT + [SHIFT +] {1..10} to [move to] workspace {11..20}
+            builtins.concatLists (builtins.genList (
+                x: let
+                  ws = let
+                    c = (x + 1) / 10;
+                  in
+                    builtins.toString (x + 1 - (c * 10));
+                in [
+                  "${mod} ALT, ${ws}, workspace, ${toString (x + 11)}"
+                  "${mod} ALT SHIFT, ${ws}, movetoworkspace, ${toString (x + 11)}"
+                ]
+              )
+              10)
           );
 
         # Move/resize windows with mod + LMB/RMB and dragging
@@ -181,24 +219,29 @@
 
         binde = [
           # Resize windows with mod + CTRL + vim keys
-          "${mod} CTRL, H, resizeactive, -10 0"
-          "${mod} CTRL, J, resizeactive, 0 10"
-          "${mod} CTRL, K, resizeactive, 0 -10"
-          "${mod} CTRL, L, resizeactive, 10 0"
+          "${mod} CTRL, H, resizeactive, -20 0"
+          "${mod} CTRL, J, resizeactive, 0 20"
+          "${mod} CTRL, K, resizeactive, 0 -20"
+          "${mod} CTRL, L, resizeactive, 20 0"
         ];
 
-        # Brightness and volume keys (we have to use PulseAudio CLI here, because PipeWire doesn't have one :/)
+        # Brightness and volume keys
         bindel = [
           # (e) Repeat when held down, (l) works on the lockscreen
           ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
           ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
 
-          ", XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-volume @DEFAULT_SINK@ -5%"
-          ", XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-volume @DEFAULT_SINK@ +5%"
+          ", XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume -l 0 @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
         ];
         bindl = [
-          ", XF86AudioMute, exec, ${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-mute @DEFAULT_SINK@ toggle"
-          ", XF86AudioMicMute, exec, ${lib.getExe' pkgs.pulseaudio "pactl"} set-source-mute @DEFAULT_SOURCE@ toggle"
+          ", XF86AudioMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+          ", XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
+          ", XF86AudioPause, exec, ${lib.getExe pkgs.playerctl} play-pause"
+          ", XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+          ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
         ];
       };
     };
