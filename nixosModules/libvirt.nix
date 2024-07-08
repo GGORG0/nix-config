@@ -12,7 +12,7 @@
 
   config = lib.mkIf config.ggorg.libvirt.enable {
     virtualisation.libvirtd.enable = true;
-    ggorg.user.extraGroups = ["libvirtd"];
+    ggorg.user.extraGroups = ["libvirt"];
 
     boot.extraModprobeConfig = ''
       options kvm_intel nested=1
