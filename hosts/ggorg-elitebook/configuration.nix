@@ -42,6 +42,7 @@
       firewall.enable = false;
       ssh.enable = true;
     };
+    obs.enable = true;
     steam.enable = true;
   };
 }

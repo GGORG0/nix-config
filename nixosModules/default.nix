@@ -10,6 +10,7 @@
     ./locale.nix
     ./network.nix
     ./nix-conf.nix
+    ./obs.nix
     ./steam.nix
     ./user.nix
   ];

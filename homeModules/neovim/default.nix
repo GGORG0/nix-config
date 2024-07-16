@@ -26,6 +26,11 @@
       vimAlias = true;
       viAlias = true;
 
+      clipboard = {
+        register = "unnamedplus";
+        providers.wl-copy.enable = true;
+      };
+
       colorschemes.catppuccin.enable = true;
     };
   };

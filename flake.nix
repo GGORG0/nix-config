@@ -46,10 +46,13 @@
       ];
 
       perSystem = {
+        self',
         config,
         pkgs,
         ...
       }: {
+        packages.default = self'.packages.activate;
+
         formatter = pkgs.alejandra;
 
         pre-commit.settings = {

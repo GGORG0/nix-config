@@ -15,7 +15,6 @@
       libreoffice-fresh
       hunspell
       hunspellDicts.pl-pl
-      kicad
 
       # Better calculator
       qalculate-gtk
@@ -29,9 +28,6 @@
 
       # Hand-written notes
       rnote
-
-      # Screen recording
-      obs-studio
 
       # Image editing
       gimp

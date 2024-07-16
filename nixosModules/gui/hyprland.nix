@@ -37,7 +37,7 @@
 
     environment.systemPackages = with pkgs; [
       cinnamon.nemo-with-extensions # TODO: replace with yazi
-      gnome.file-roller
+      file-roller
       nsxiv # TODO: replace with imv or nomacs
       mpv
     ];
