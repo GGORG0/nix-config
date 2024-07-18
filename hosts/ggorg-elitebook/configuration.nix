@@ -25,6 +25,7 @@
       libinput.enable = true;
       opengl.enable = true;
       power.enable = true;
+      qmk.enable = true;
       sound.enable = true;
       wacom.enable = true;
     };

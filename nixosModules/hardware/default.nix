@@ -7,6 +7,7 @@
     ./libinput.nix
     ./opengl.nix
     ./power.nix
+    ./qmk.nix
     ./sound.nix
     ./wacom.nix
   ];
