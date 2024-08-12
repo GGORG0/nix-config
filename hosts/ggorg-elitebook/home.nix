@@ -31,6 +31,12 @@
 
       # Screen mirroring from Android
       scrcpy
+
+      # Music player
+      spotube
+
+      # PCB editor
+      kicad
     ];
   };
 
