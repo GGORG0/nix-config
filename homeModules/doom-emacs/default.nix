@@ -21,7 +21,7 @@
       (pkgs.aspellWithDicts (dicts: with dicts; [en en-computers en-science pl]))
     ];
 
-    programs.doom-emacs = rec {
+    programs.doom-emacs = {
       enable = true;
       doomPrivateDir = ./doom.d;
       doomPackageDir = pkgs.linkFarm "doom-package-dir" [
@@ -44,7 +44,7 @@
     services.emacs = {
       enable = true;
       startWithUserSession = "graphical";
-      defaultEditor = true;
+      defaultEditor = false;
       client.enable = true;
     };
   };

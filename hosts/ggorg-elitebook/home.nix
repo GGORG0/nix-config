@@ -48,7 +48,6 @@
   # --------------------
 
   ggorg = {
-    doomEmacs.enable = true;
     hyprland = {
       enable = true;
       monitors = [
