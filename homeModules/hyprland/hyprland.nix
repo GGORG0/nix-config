@@ -127,9 +127,8 @@
 
             # App shortcuts
             "${mod}, return, exec, ${lib.getExe pkgs.kitty} --single-instance"
-            "${mod}, E, exec, ${lib.getExe' pkgs.emacs "emacsclient"} -c -a ''"
             "${mod}, B, exec, ${lib.getExe pkgs.librewolf}"
-            "${mod}, G, exec, ${lib.getExe pkgs.cinnamon.nemo-with-extensions}" # TODO: replace nemo with Yazi
+            "${mod}, G, exec, ${lib.getExe pkgs.nemo-with-extensions}" # TODO: replace nemo with Yazi
 
             # Rofi
             "${mod}, R, exec, ${lib.getExe config.programs.rofi.finalPackage} -show drun"
@@ -152,7 +151,7 @@
             "${mod}, T, togglesplit," # toggle split direction
             "${mod}, M, fullscreen, 1" # maximize but keep panel and gaps
             "${mod} SHIFT, M, fullscreen, 0" # fullscreen (no panel or gaps)
-            "${mod} ALT, M, fakefullscreen," # make the app think it's fullscreen without altering the geometry
+            "${mod} ALT, M, fullscreenstate, 0 3" # make the app think it's fullscreen without altering the geometry
 
             # Move focus with mod + vim keys
             "${mod}, H, movefocus, l"

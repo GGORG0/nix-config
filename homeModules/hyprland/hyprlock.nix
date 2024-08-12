@@ -37,9 +37,9 @@
         label = [
           {
             monitor = "";
-            position = "-30, 0";
-            halign = "right";
-            valign = "top";
+            position = "0, 150";
+            halign = "center";
+            valign = "center";
 
             # clock
             text = "$TIME";
@@ -53,12 +53,12 @@
           }
           {
             monitor = "";
-            position = "-30, -150";
-            halign = "right";
-            valign = "top";
+            position = "0, 75";
+            halign = "center";
+            valign = "center";
 
             # date
-            text = "cmd[update:3600000] echo \"$(date +\"%A, %d %B %Y\")\"";
+            text = "cmd[update:10000] echo \"$(date +\"%A, %d %B %Y\")\"";
 
             color = text;
             shadow_passes = 1;
@@ -88,7 +88,7 @@
             font_color = text;
 
             fade_on_empty = false;
-            placeholder_text = ''<span foreground="##cdd6f4"><i>󰌾 Logged in as <span foreground="##${accentAlpha}">$USER</span></i></span>'';
+            placeholder_text = ''<span foreground="##cdd6f4">󰌾 Logged in as <span foreground="##${accentAlpha}">$USER</span></span>'';
 
             hide_input = false;
 

@@ -22,12 +22,12 @@
       (with pkgs; [
         gnome-tour
         snapshot
-      ])
-      ++ (with pkgs.gnome; [
         cheese
         epiphany
         geary
         simple-scan
+      ])
+      ++ (with pkgs.gnome; [
         gnome-logs
         gnome-maps
         gnome-weather
@@ -36,7 +36,7 @@
     environment.systemPackages =
       (with pkgs; [
         qt5.qtwayland # Required for Qt5 on Wayland
-        gnome.gnome-tweaks
+        gnome-tweaks
       ])
       ++ (with pkgs.gnomeExtensions; [
         # GNOME Extensions

@@ -36,7 +36,7 @@
     services.gvfs.enable = true;
 
     environment.systemPackages = with pkgs; [
-      cinnamon.nemo-with-extensions # TODO: replace with yazi
+      nemo-with-extensions # TODO: replace with yazi
       file-roller
       nsxiv # TODO: replace with imv or nomacs
       mpv

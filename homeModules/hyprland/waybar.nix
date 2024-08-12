@@ -39,7 +39,7 @@
             sort-by-name = true;
             format = "{id}";
             show-special = true;
-            persistent_workspaces = {"*" = 10;};
+            persistent-workspaces = {"*" = 10;};
             on-scroll-up = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e+1";
             on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
           };

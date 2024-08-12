@@ -15,12 +15,12 @@
     };
   };
 
-  config = {
-    networking.networkmanager.enable = config.ggorg.network.enable;
+  config = lib.mkIf config.ggorg.network.enable {
+    networking.networkmanager.enable = true;
     networking.firewall.enable = config.ggorg.network.firewall.enable;
 
     # Rootless access
-    ggorg.user.extraGroups = [lib.optional config.ggorg.network.enable "networkmanager"];
+    ggorg.user.extraGroups = ["networkmanager"];
 
     services.openssh.enable = config.ggorg.network.ssh.enable;
   };
