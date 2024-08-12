@@ -28,6 +28,7 @@
       qmk.enable = true;
       sound.enable = true;
       wacom.enable = true;
+      yubikey.enable = true;
     };
     boot = {
       systemd-boot = {

@@ -10,5 +10,6 @@
     ./qmk.nix
     ./sound.nix
     ./wacom.nix
+    ./yubikey.nix
   ];
 }

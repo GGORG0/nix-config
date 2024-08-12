@@ -19,10 +19,6 @@
       # Better calculator
       qalculate-gtk
 
-      # YubiKey stuff
-      yubioath-flutter
-      yubikey-manager-qt
-
       # ProtonMail desktop client (official one requires paid account)
       electron-mail
 

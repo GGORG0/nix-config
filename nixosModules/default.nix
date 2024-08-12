@@ -6,6 +6,7 @@
     ./boot.nix
     ./common-pkgs.nix
     ./docker.nix
+    ./gnupg.nix
     ./libvirt.nix
     ./locale.nix
     ./network.nix

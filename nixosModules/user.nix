@@ -40,7 +40,8 @@
           "video" # backlight control
           "dialout" # USB to serial adapters (ex. arduino)
         ]
-        ++ lib.optionals config.ggorg.user.sudo ["wheel"];
+        ++ lib.optionals config.ggorg.user.sudo ["wheel"]
+        ++ config.ggorg.user.extraGroups;
       inherit (config.ggorg.user) shell;
     };
     nix.settings.trusted-users = [config.ggorg.user.username];
