@@ -19,6 +19,7 @@
 
         ipc = false;
         splash = true;
+        splash_offset = 1.0;
       };
     };
   };
