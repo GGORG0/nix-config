@@ -8,9 +8,11 @@
 
     # utils
     ripgrep # recursively searches directories for a regex pattern
+    fd # a faster "find" alternative
     jq # A lightweight and flexible command-line JSON processor
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
+    xcp # a faster "cp" alternative
 
     # networking tools
     iperf3
