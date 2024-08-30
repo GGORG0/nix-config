@@ -21,6 +21,10 @@
       kate # text editor
     ];
 
+    environment.systemPackages = with pkgs; [
+      maliit-keyboard # on screen keyboard for plasma
+    ];
+
     # Make Electron apps use Wayland
     environment.sessionVariables."NIXOS_OZONE_WL" = "1";
   };
