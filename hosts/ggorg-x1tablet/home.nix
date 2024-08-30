@@ -7,9 +7,6 @@
       telegram-desktop
       element-desktop
 
-      # Gaming
-      prismlauncher
-
       # LibreOffice
       libreoffice-fresh
       hunspell
@@ -23,6 +20,9 @@
 
       # Hand-written notes
       rnote
+
+      # Image editing
+      gimp
     ];
   };
 
@@ -30,31 +30,6 @@
 
   # TODO: move to module
   programs.librewolf.enable = true;
-
-  # --------------------
-
-  # TODO: move to module
-  qt = {
-    enable = true;
-    platformTheme.name = "adwaita";
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt;
-    };
-  };
-
-  gtk = {
-    enable = true;
-    theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
-    };
-  };
-
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
 
   # --------------------
 

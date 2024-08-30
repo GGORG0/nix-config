@@ -13,34 +13,35 @@
     };
     gui = {
       fonts.enable = true;
-      gnome = {
-        enable = true;
-        gdm.enable = true;
-      };
+      plasma.enable = true;
     };
     hardware = {
       bluetooth.enable = true;
-      em7455.enable = true;
       hpPrinter.enable = true;
-      iioSensors.enable = true;
       libinput.enable = true;
       opengl.enable = true;
+      power.enable = true;
+      qmk.enable = false;
       sound.enable = true;
       wacom.enable = true;
+      yubikey.enable = true;
     };
     boot = {
       systemd-boot = {
         enable = true;
         timeout = 1;
       };
-      sysrq = 383;
+      sysrq = 1;
     };
-    docker.enable = true;
+    docker.enable = false;
+    libvirt.enable = false;
     network = {
       enable = true;
       firewall.enable = false;
       ssh.enable = true;
     };
+    obs.enable = false;
+    steam.enable = false;
   };
 
   # Disable wakeup from the magnetic keyboard

@@ -1,5 +1,4 @@
 {
-  flake,
   pkgs,
   config,
   lib,
@@ -15,8 +14,6 @@
     # Enable the Hyprland window manager
     programs.hyprland = {
       enable = true;
-      package = flake.inputs.hyprland.packages.${pkgs.system}.hyprland;
-      # portalPackage = flake.inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };
 
     # Enable the greetd display manager

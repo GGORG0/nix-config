@@ -9,7 +9,6 @@
 
       # Gaming
       prismlauncher
-      mindustry
 
       # LibreOffice
       libreoffice-fresh

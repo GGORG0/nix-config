@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./doom-emacs
     ./hyprland
     ./neovim
     ./zsh

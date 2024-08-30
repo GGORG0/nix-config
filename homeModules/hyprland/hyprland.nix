@@ -2,13 +2,8 @@
   lib,
   config,
   pkgs,
-  flake,
   ...
 }: {
-  imports = [
-    flake.inputs.hyprland.homeManagerModules.default
-  ];
-
   options = {
     ggorg.hyprland = {
       monitors = lib.mkOption {
@@ -22,8 +17,6 @@
     wayland.windowManager.hyprland = {
       enable = true;
       xwayland.enable = true;
-
-      package = flake.inputs.hyprland.packages.${pkgs.system}.hyprland;
 
       # for service autostart (instead of using exec-once)
       systemd.enable = true;
@@ -255,7 +248,7 @@
     # xdg.portal = {
     #   enable = true;
     #   extraPortals = [
-    #     flake.inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
+    #     pkgs.xdg-desktop-portal-hyprland
     #     pkgs.xdg-desktop-portal-gtk
     #   ];
     #   config.hyprland = {

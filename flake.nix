@@ -18,9 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Doom Emacs managed by Nix (to be replaced by Nixvim)
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
-
     # Rust managed by Nix
     rust-overlay.url = "github:oxalica/rust-overlay";
 
@@ -29,11 +26,6 @@
       url = "github:nix-community/nixvim";
       # inputs.nixpkgs.follows = "nixpkgs"; # https://github.com/nix-community/nixvim/issues/1699
     };
-
-    # Hyprland and friends
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    xdg-desktop-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    hyprlock.url = "github:hyprwm/hyprlock";
   };
 
   outputs = inputs @ {self, ...}:
