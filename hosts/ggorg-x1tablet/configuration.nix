@@ -17,7 +17,9 @@
     };
     hardware = {
       bluetooth.enable = true;
+      em7455.enable = true;
       hpPrinter.enable = true;
+      iioSensors.enable = true;
       libinput.enable = true;
       opengl.enable = true;
       power.enable = true;
