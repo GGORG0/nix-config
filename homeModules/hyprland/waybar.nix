@@ -17,7 +17,7 @@
 
   config = {
     programs.waybar = {
-      enable = true;
+      inherit (config.ggorg.waybar) enable;
 
       systemd = {
         enable = config.ggorg.hyprland.waybar.systemdTarget != "";

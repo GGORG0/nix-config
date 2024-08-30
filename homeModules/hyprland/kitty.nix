@@ -12,7 +12,7 @@
 
   config = {
     programs.kitty = {
-      enable = true;
+      inherit (config.ggorg.hyprland) enable;
       theme = "Catppuccin-Mocha";
       font = {
         name = "JetBrainsMono Nerd Font";
