@@ -26,6 +26,7 @@
       opengl.enable = true;
       power.enable = true;
       qmk.enable = true;
+      saleae.enable = true;
       sound.enable = true;
       wacom.enable = true;
       yubikey.enable = true;

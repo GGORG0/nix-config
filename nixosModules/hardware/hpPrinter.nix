@@ -6,7 +6,7 @@
 }: {
   options = {
     ggorg.hardware.hpPrinter = {
-      enable = lib.mkEnableOption "CUPS + HP driver";
+      enable = lib.mkEnableOption "CUPS + SANE + HP driver";
     };
   };
 
@@ -15,5 +15,16 @@
       enable = true;
       drivers = [pkgs.hplipWithPlugin];
     };
+
+    hardware.sane.enable = true;
+    ggorg.user.extraGroups = ["scanner" "lp"];
+
+    hardware.sane.extraBackends = [pkgs.sane-airscan];
+    services.udev.packages = [pkgs.sane-airscan];
+
+    environment.systemPackages = with pkgs; [
+      skanlite
+      xsane
+    ];
   };
 }

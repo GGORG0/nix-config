@@ -18,7 +18,7 @@
       };
       extraGroups = lib.mkOption {
         type = lib.types.listOf lib.types.str;
-        description = "The default user's description";
+        description = "The default user's groups";
         default = [];
       };
       sudo = lib.mkEnableOption "wheel group for the default user" // {default = true;};
