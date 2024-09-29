@@ -50,8 +50,10 @@
 
           clock = {
             interval = 1;
-            format = " {:%H:%M:%S %d %b}";
-            tooltip-format = "<tt><small>{calendar}</small></tt>";
+            format = " {:L%H:%M:%S %d %b}";
+            timezone = "Europe/Warsaw";
+            locale = "pl_PL.UTF-8";
+            tooltip-format = "<tt>{calendar}</tt>";
             calendar = {
               mode = "year";
               mode-mon-col = 3;
@@ -73,6 +75,7 @@
             "memory"
             "backlight"
             "battery"
+            "power-profiles-daemon"
             "custom/dunst"
             "custom/audio_idle_inhibitor"
             "idle_inhibitor"
@@ -97,12 +100,12 @@
           };
 
           cpu = {
-            interval = 10;
+            interval = 2;
             format = "{usage}% ";
           };
 
           memory = {
-            interval = 10;
+            interval = 2;
             format = "{percentage}% ";
           };
 
@@ -112,7 +115,7 @@
           };
 
           battery = {
-            interval = 30;
+            interval = 10;
             full-at = 95;
             states = {
               warning = 30;
@@ -123,6 +126,37 @@
             format-plugged = "{capacity}% ";
             format-icons = [ "󱃍" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹" ];
             tooltip-format = "{capacity}%\n{timeTo}\n{power} W";
+          };
+
+          power-profiles-daemon = {
+            format = "{icon}";
+            format-icons = {
+              performance = " ";
+              balanced = " ";
+              power-saver = " ";
+            };
+          };
+
+          privacy = {
+            icon-spacing = 10;
+            icon-size = 18;
+            modules = [
+              {
+                type = "screenshare";
+                tooltip = true;
+                tooltip-icon-size = 24;
+              }
+              {
+                type = "audio-out";
+                tooltip = true;
+                tooltip-icon-size = 24;
+              }
+              {
+                type = "audio-in";
+                tooltip = true;
+                tooltip-icon-size = 24;
+              }
+            ];
           };
 
           "custom/dunst" = {
@@ -235,6 +269,7 @@
         #memory,
         #backlight,
         #battery,
+        #power-profiles-daemon,
         #custom-dunst,
         #custom-audio_idle_inhibitor,
         #idle_inhibitor,
@@ -312,15 +347,20 @@
         }
 
         #backlight {
-          color: @green;
+          color: @sky;
         }
 
         #battery {
-          color: @yellow;
+          color: @green;
         }
 
         #battery.warning:not(.charging) {
-          color: @red;
+          background-color: @red;
+          color: @text;
+        }
+
+        #power-profiles-daemon {
+          color: @yellow;
         }
 
         #custom-dunst {
