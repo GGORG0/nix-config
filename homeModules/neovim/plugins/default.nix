@@ -19,7 +19,6 @@ _: {
     ./notify.nix
     ./nvim-autopairs.nix
     ./telescope.nix
-    ./treesitter-context.nix
     ./treesitter.nix
     ./trim.nix
     ./trouble.nix
