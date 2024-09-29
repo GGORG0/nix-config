@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }: {
   options = {
     ggorg.hyprland.kitty = {
@@ -13,10 +12,10 @@
   config = {
     programs.kitty = {
       inherit (config.ggorg.hyprland.kitty) enable;
-      theme = "Catppuccin-Mocha";
+      themeFile = "Catppuccin-Mocha";
       font = {
         name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
       };
       settings = {
         background_opacity = "0.75";

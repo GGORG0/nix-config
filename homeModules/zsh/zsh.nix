@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   config = {
     programs.zsh = {
       inherit (config.ggorg.zsh) enable;

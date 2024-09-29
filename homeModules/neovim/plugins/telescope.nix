@@ -44,31 +44,31 @@ _: {
       {
         key = "<leader>fr";
         action = "<CMD>Telescope file_browser<CR>";
-        options.desc = "File bRowser";
+        options.desc = "File browser";
       }
 
       {
         key = "<leader>fc";
         action = "<CMD>Telescope file_browser path=%:p:h<CR>";
-        options.desc = "File browser in Current dir";
+        options.desc = "File browser in current dir";
       }
 
       {
         key = "<leader>fo";
         action = "<CMD>Telescope oldfiles<CR>";
-        options.desc = "Old Files";
+        options.desc = "Recent files";
       }
 
       {
         key = "<leader>fg";
         action = "<CMD>Telescope live_grep<CR>";
-        options.desc = "Find w/ Grep";
+        options.desc = "Find w/ grep";
       }
 
       {
         key = "<leader>fh";
         action = "<CMD>Telescope help_tags<CR>";
-        options.desc = "Find Help";
+        options.desc = "Find help";
       }
 
       {

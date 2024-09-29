@@ -1,9 +1,8 @@
-{
-  flake,
-  lib,
-  config,
-  pkgs,
-  ...
+{ flake
+, lib
+, config
+, pkgs
+, ...
 }: {
   imports = [
     flake.inputs.nixvim.homeManagerModules.nixvim
@@ -34,6 +33,15 @@
         fd
         fzf
       ];
+
+      performance = {
+        byteCompileLua = {
+          enable = true;
+          configs = true;
+          nvimRuntime = true;
+          plugins = true;
+        };
+      };
     };
   };
 }

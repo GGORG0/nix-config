@@ -26,115 +26,125 @@
       url = "github:nix-community/nixvim";
       # inputs.nixpkgs.follows = "nixpkgs"; # https://github.com/nix-community/nixvim/issues/1699
     };
+
+    # Run non-NixOS, dynamically compiled programs easily
+    nix-alien.url = "github:thiagokokada/nix-alien";
+
+    # Find which package has a file in it
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ {self, ...}:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux" "aarch64-linux"];
+  outputs = inputs @ { self, ... }:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" ];
 
       imports = [
         inputs.nixos-flake.flakeModule
         inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem = {
-        self',
-        config,
-        pkgs,
-        ...
-      }: {
-        packages.default = self'.packages.activate;
+      perSystem =
+        { self'
+        , config
+        , pkgs
+        , ...
+        }: {
+          packages.default = self'.packages.activate;
 
-        formatter = pkgs.alejandra;
+          formatter = pkgs.nixpkgs-fmt;
 
-        pre-commit.settings = {
-          hooks = {
-            alejandra.enable = true;
-            statix.enable = true;
-            deadnix.enable = true;
-            nil.enable = true;
+          pre-commit.settings = {
+            hooks = {
+              nixpkgs-fmt.enable = true;
+              statix.enable = true;
+              deadnix.enable = true;
+              nil.enable = true;
+            };
           };
-        };
 
-        devShells.default = pkgs.mkShell {
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
+          devShells.default = pkgs.mkShell {
+            shellHook = ''
+              ${config.pre-commit.installationScript}
+            '';
 
-          packages = with pkgs; [
-            alejandra # formatter
-            statix # linter
-            deadnix # scan for dead code
-            nil # language server
-          ];
-        };
-      };
-
-      flake = let
-        username = "ggorg";
-        stateVersion = "24.05";
-
-        mkNixosSystem = {
-          hostname,
-          hostPlatform,
-        }:
-          self.nixos-flake.lib.mkLinuxSystem {
-            nixpkgs = {
-              inherit hostPlatform;
-              config.allowUnfree = true;
-            };
-
-            system = {
-              inherit stateVersion;
-            };
-
-            networking.hostName = hostname;
-
-            imports = [
-              ./hosts/${hostname}/configuration.nix
-              ./nixosModules
-
-              self.nixosModules.home-manager
-
-              {
-                home-manager = {
-                  users.${username} = {
-                    home = {
-                      inherit stateVersion;
-                    };
-
-                    # Nicely reload system units when changing configs
-                    systemd.user.startServices = "sd-switch";
-
-                    nixpkgs.config = {
-                      allowUnfree = true;
-                      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-                      allowUnfreePredicate = _: true;
-                    };
-
-                    imports = [
-                      ./hosts/${hostname}/home.nix
-                      ./homeModules
-                    ];
-                  };
-
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                };
-              }
+            packages = with pkgs; [
+              nixpkgs-fmt # formatter
+              statix # linter
+              deadnix # scan for dead code
+              nil # language server
             ];
           };
-      in {
-        nixosConfigurations = {
-          ggorg-elitebook = mkNixosSystem {
-            hostname = "ggorg-elitebook";
-            hostPlatform = "x86_64-linux";
-          };
-          ggorg-x1tablet = mkNixosSystem {
-            hostname = "ggorg-x1tablet";
-            hostPlatform = "x86_64-linux";
+        };
+
+      flake =
+        let
+          username = "ggorg";
+          stateVersion = "24.05";
+
+          mkNixosSystem =
+            { hostname
+            , hostPlatform
+            ,
+            }:
+            self.nixos-flake.lib.mkLinuxSystem { home-manager = true; } {
+              nixpkgs = {
+                inherit hostPlatform;
+                config.allowUnfree = true;
+              };
+
+              system = {
+                inherit stateVersion;
+              };
+
+              networking.hostName = hostname;
+
+              imports = [
+                ./hosts/${hostname}/configuration.nix
+                ./nixosModules
+
+                {
+                  home-manager = {
+                    users.${username} = {
+                      home = {
+                        inherit stateVersion;
+                      };
+
+                      # Nicely reload system units when changing configs
+                      systemd.user.startServices = "sd-switch";
+
+                      nixpkgs.config = {
+                        allowUnfree = true;
+                        # Workaround for https://github.com/nix-community/home-manager/issues/2942
+                        allowUnfreePredicate = _: true;
+                      };
+
+                      imports = [
+                        ./hosts/${hostname}/home.nix
+                        ./homeModules
+                      ];
+                    };
+
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                  };
+                }
+              ];
+            };
+        in
+        {
+          nixosConfigurations = {
+            ggorg-elitebook = mkNixosSystem {
+              hostname = "ggorg-elitebook";
+              hostPlatform = "x86_64-linux";
+            };
+            ggorg-x1tablet = mkNixosSystem {
+              hostname = "ggorg-x1tablet";
+              hostPlatform = "x86_64-linux";
+            };
           };
         };
-      };
     };
 }

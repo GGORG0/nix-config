@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home = {
     # TODO: move to module
     packages = with pkgs; [
@@ -36,6 +36,9 @@
 
       # PCB editor
       kicad
+
+      # Drag-and-drop in terminal
+      xdragon
     ];
   };
 

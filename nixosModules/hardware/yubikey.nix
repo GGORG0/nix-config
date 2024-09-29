@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   options = {
     ggorg.hardware.yubikey = {
@@ -16,7 +15,7 @@
     services.pcscd.enable = true;
     hardware.gpgSmartcards.enable = true;
 
-    services.udev.packages = [pkgs.yubikey-personalization];
+    services.udev.packages = [ pkgs.yubikey-personalization ];
 
     programs.yubikey-touch-detector.enable = true;
 

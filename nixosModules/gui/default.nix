@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./fonts.nix
     ./greetd.nix

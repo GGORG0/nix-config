@@ -1,8 +1,7 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
+{ lib
+, pkgs
+, config
+, ...
 }: {
   options = {
     ggorg.hyprland.waybar = {
@@ -39,7 +38,7 @@
             sort-by-name = true;
             format = "{id}";
             show-special = true;
-            persistent-workspaces = {"*" = 10;};
+            persistent-workspaces = { "*" = 10; };
             on-scroll-up = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e+1";
             on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
           };
@@ -72,7 +71,6 @@
             "pulseaudio"
             "cpu"
             "memory"
-            "temperature"
             "backlight"
             "battery"
             "custom/dunst"
@@ -91,7 +89,7 @@
             format-source = "{volume}% ";
             format-source-muted = "";
 
-            format-icons = ["" "" ""];
+            format-icons = [ "" "" "" ];
 
             on-click = "${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-mute @DEFAULT_SINK@ toggle";
             on-click-right = lib.getExe pkgs.pavucontrol;
@@ -108,14 +106,9 @@
             format = "{percentage}% ";
           };
 
-          temperature = {
-            interval = 10;
-            format = "{temperatureC}°C ";
-          };
-
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = ["" "" "" "" "" "" "" "" ""];
+            format-icons = [ "" "" "" "" "" "" "" "" "" ];
           };
 
           battery = {
@@ -128,33 +121,35 @@
             format = "{capacity}% {icon}";
             format-charging = "{capacity}% 󰂄";
             format-plugged = "{capacity}% ";
-            format-icons = ["󱃍" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹"];
+            format-icons = [ "󱃍" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹" ];
             tooltip-format = "{capacity}%\n{timeTo}\n{power} W";
           };
 
           "custom/dunst" = {
-            exec = lib.getExe' (pkgs.writeShellScriptBin "dunst" ''
-              set -euo pipefail
+            exec =
+              lib.getExe'
+                (pkgs.writeShellScriptBin "dunst" ''
+                  set -euo pipefail
 
-              ENABLED=
-              DISABLED=
-              DISABLED_UNREAD=
+                  ENABLED=
+                  DISABLED=
+                  DISABLED_UNREAD=
 
-              ${lib.getExe' pkgs.dbus "dbus-monitor"} path='/org/freedesktop/Notifications',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged' --profile |
-                  while read -r _; do
-                      PAUSED="$(${lib.getExe' pkgs.dunst "dunstctl"} is-paused)"
-                      if [ "$PAUSED" == 'false' ]; then
-                          TEXT="$ENABLED "
-                      else
-                          TEXT="$DISABLED "
-                          COUNT="$(${lib.getExe' pkgs.dunst "dunstctl"} count waiting)"
-                          if [ "$COUNT" != '0' ]; then
-                              TEXT="$COUNT $DISABLED_UNREAD "
+                  ${lib.getExe' pkgs.dbus "dbus-monitor"} path='/org/freedesktop/Notifications',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged' --profile |
+                      while read -r _; do
+                          PAUSED="$(${lib.getExe' pkgs.dunst "dunstctl"} is-paused)"
+                          if [ "$PAUSED" == 'false' ]; then
+                              TEXT="$ENABLED "
+                          else
+                              TEXT="$DISABLED "
+                              COUNT="$(${lib.getExe' pkgs.dunst "dunstctl"} count waiting)"
+                              if [ "$COUNT" != '0' ]; then
+                                  TEXT="$COUNT $DISABLED_UNREAD "
+                              fi
                           fi
-                      fi
-                      printf '{"text": "%s"}\n' "$TEXT"
-                  done
-            '') "dunst";
+                          printf '{"text": "%s"}\n' "$TEXT"
+                      done
+                '') "dunst";
             return-type = "json";
             on-click = "${lib.getExe' pkgs.dunst "dunstctl"} set-paused toggle";
           };
@@ -238,7 +233,6 @@
         #pulseaudio,
         #cpu,
         #memory,
-        #temperature,
         #backlight,
         #battery,
         #custom-dunst,
@@ -315,10 +309,6 @@
 
         #memory {
           color: @sapphire;
-        }
-
-        #temperature {
-          color: @teal;
         }
 
         #backlight {

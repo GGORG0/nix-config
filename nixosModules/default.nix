@@ -1,10 +1,11 @@
-{...}: {
+{ ... }: {
   imports = [
     ./development
     ./gui
     ./hardware
     ./boot.nix
     ./common-pkgs.nix
+    ./compat.nix
     ./docker.nix
     ./gnupg.nix
     ./libvirt.nix

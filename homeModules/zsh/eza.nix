@@ -1,7 +1,6 @@
-{
-  config,
-  lib,
-  ...
+{ config
+, lib
+, ...
 }: {
   options = {
     ggorg.zsh.eza.enable = lib.mkEnableOption "eza";

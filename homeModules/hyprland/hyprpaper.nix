@@ -1,7 +1,6 @@
-{
-  lib,
-  config,
-  ...
+{ lib
+, config
+, ...
 }: {
   options = {
     ggorg.hyprland.hyprpaper = {
@@ -14,8 +13,8 @@
       inherit (config.ggorg.hyprland.hyprpaper) enable;
 
       settings = {
-        preload = ["${./wallpaper.png}"];
-        wallpaper = [",${./wallpaper.png}"];
+        preload = [ "${./wallpaper.png}" ];
+        wallpaper = [ ",${./wallpaper.png}" ];
 
         ipc = false;
         splash = true;

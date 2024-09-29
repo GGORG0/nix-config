@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   options = {
     ggorg.gui.fonts = {
@@ -26,11 +25,11 @@
         corefonts
         vistafonts
 
-        (nerdfonts.override {fonts = ["JetBrainsMono"];})
+        (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       ];
       fontconfig = {
         defaultFonts = {
-          monospace = ["JetBrainsMono Nerd Font"];
+          monospace = [ "JetBrainsMono Nerd Font" ];
         };
       };
     };

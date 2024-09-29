@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   options = {
     ggorg.development.arduino = {
@@ -15,6 +14,8 @@
     environment.systemPackages = with pkgs; [
       arduino-ide
       python312Packages.pyserial # for ESP32 flashing using esptool
+
+      picocom
     ];
   };
 }

@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }: {
   options = {
     ggorg.libvirt = {
@@ -12,7 +11,7 @@
 
   config = lib.mkIf config.ggorg.libvirt.enable {
     virtualisation.libvirtd.enable = true;
-    ggorg.user.extraGroups = ["libvirtd"];
+    ggorg.user.extraGroups = [ "libvirtd" ];
 
     boot.extraModprobeConfig = ''
       options kvm_intel nested=1
@@ -20,6 +19,6 @@
       options kvm ignore_msrs=1
     '';
 
-    environment.systemPackages = [pkgs.virt-manager];
+    environment.systemPackages = [ pkgs.virt-manager ];
   };
 }

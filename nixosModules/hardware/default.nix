@@ -1,10 +1,11 @@
-{...}: {
+{ ... }: {
   imports = [
     ./bluetooth.nix
     ./em7455.nix
     ./hpPrinter.nix
     ./iioSensors.nix
     ./libinput.nix
+    ./lmsensors.nix
     ./opengl.nix
     ./power.nix
     ./qmk.nix

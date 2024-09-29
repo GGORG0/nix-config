@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./adb.nix
     ./arduino.nix

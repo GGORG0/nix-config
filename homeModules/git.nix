@@ -1,11 +1,10 @@
-{
-  config,
-  lib,
-  ...
+{ config
+, lib
+, ...
 }: {
   options = {
     ggorg.git = {
-      enable = lib.mkEnableOption "Git" // {default = true;};
+      enable = lib.mkEnableOption "Git" // { default = true; };
       user = {
         name = lib.mkOption {
           type = lib.types.str;

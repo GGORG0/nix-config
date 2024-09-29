@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   options = {
     ggorg.hardware.hpPrinter = {
@@ -13,14 +12,14 @@
   config = lib.mkIf config.ggorg.hardware.hpPrinter.enable {
     services.printing = {
       enable = true;
-      drivers = [pkgs.hplipWithPlugin];
+      drivers = [ pkgs.hplipWithPlugin ];
     };
 
     hardware.sane.enable = true;
-    ggorg.user.extraGroups = ["scanner" "lp"];
+    ggorg.user.extraGroups = [ "scanner" "lp" ];
 
-    hardware.sane.extraBackends = [pkgs.sane-airscan];
-    services.udev.packages = [pkgs.sane-airscan];
+    hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+    services.udev.packages = [ pkgs.sane-airscan ];
 
     environment.systemPackages = with pkgs; [
       skanlite

@@ -1,7 +1,6 @@
-{
-  config,
-  lib,
-  ...
+{ config
+, lib
+, ...
 }: {
   options = {
     ggorg.zsh.starship.enable = lib.mkEnableOption "Starship prompt";

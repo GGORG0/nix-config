@@ -5,21 +5,24 @@ _: {
     ./cmp-cmdline.nix
     ./cmp.nix
     ./comment.nix
+    ./conform.nix
     ./crates-nvim.nix
+    ./gitsigns.nix
     ./illuminate.nix
-    ./inc-rename.nix
-    ./lsp-format.nix
-    ./lsp-lines.nix
+    ./indent-blankline.nix
     ./lsp.nix
+    ./lspsaga.nix
     ./lualine.nix
+    ./neogit.nix
     ./noice.nix
     ./none-ls.nix
     ./notify.nix
     ./nvim-autopairs.nix
-    ./nvim-lightbulb.nix
     ./telescope.nix
     ./treesitter-context.nix
     ./treesitter.nix
     ./trim.nix
+    ./trouble.nix
+    ./web-devicons.nix
   ];
 }

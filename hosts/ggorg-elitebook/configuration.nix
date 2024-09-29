@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -23,6 +23,7 @@
       bluetooth.enable = true;
       hpPrinter.enable = true;
       libinput.enable = true;
+      lmsensors.enable = true;
       opengl.enable = true;
       power.enable = true;
       qmk.enable = true;

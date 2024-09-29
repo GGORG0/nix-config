@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }: {
   options = {
     ggorg.hyprland.appTheme = {
@@ -17,18 +16,20 @@
       qt6Packages.qtstyleplugin-kvantum
     ];
 
-    xdg.configFile = let
-      catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-        accent = "Blue";
-        variant = "Mocha";
+    xdg.configFile =
+      let
+        catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
+          accent = "Blue";
+          variant = "Mocha";
+        };
+      in
+      {
+        "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
+          General.theme = "Catppuccin-Mocha-Blue";
+        };
+        "Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig";
+        "Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg";
       };
-    in {
-      "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-        General.theme = "Catppuccin-Mocha-Blue";
-      };
-      "Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig";
-      "Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg".source = "${catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg";
-    };
 
     home.sessionVariables.QT_STYLE_OVERRIDE = "kvantum";
 
@@ -37,7 +38,7 @@
       theme = {
         name = "catppuccin-mocha-blue-standard";
         package = pkgs.catppuccin-gtk.override {
-          accents = ["blue"];
+          accents = [ "blue" ];
           size = "standard";
           variant = "mocha";
         };

@@ -1,8 +1,7 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
+{ pkgs
+, config
+, lib
+, ...
 }: {
   options = {
     ggorg.gui.hyprland = {
@@ -23,7 +22,7 @@
     };
 
     # Add the Hyprlock PAM module
-    security.pam.services.hyprlock = {};
+    security.pam.services.hyprlock = { };
 
     # Additional configuration for Blueman
     services.blueman.enable = true;

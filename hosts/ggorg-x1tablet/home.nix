@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home = {
     # TODO: move to module
     packages = with pkgs; [

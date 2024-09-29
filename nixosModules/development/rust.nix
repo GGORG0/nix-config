@@ -1,9 +1,8 @@
-{
-  config,
-  lib,
-  pkgs,
-  flake,
-  ...
+{ config
+, lib
+, pkgs
+, flake
+, ...
 }: {
   options = {
     ggorg.development.rust = {
@@ -12,12 +11,12 @@
   };
 
   config = lib.mkIf config.ggorg.development.rust.enable {
-    nixpkgs.overlays = [flake.inputs.rust-overlay.overlays.default];
+    nixpkgs.overlays = [ flake.inputs.rust-overlay.overlays.default ];
     environment.systemPackages = [
       (pkgs.rust-bin.selectLatestNightlyWith
         (toolchain:
           toolchain.default.override {
-            extensions = ["rust-src" "rust-analyzer"];
+            extensions = [ "rust-src" "rust-analyzer" ];
           }))
     ];
   };

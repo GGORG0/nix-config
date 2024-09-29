@@ -9,7 +9,7 @@ _: {
     opts = {
       number = true; # enable line numbers
       relativenumber = true; # make line numbers relative
-      signcolumn = "number"; # make signs (e.g. error indicators) replace the line number
+      signcolumn = "yes:2"; # make signs (e.g. error indicators) replace the line number
 
       tabstop = 2; # <TAB> character gets rendered as 2 spaces
       expandtab = true; # pressing [TAB] key inserts spaces instead of <TAB> character
@@ -25,6 +25,8 @@ _: {
       smartcase = true; # if search contains capital letter, don't ignore case
 
       termguicolors = true; # enable true color
+
+      cursorline = true; # Highlight the line where the cursor is located
     };
   };
 }
