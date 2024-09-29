@@ -10,26 +10,14 @@ _: {
       {
         mode = "n";
         key = "<leader>cx";
-        action = "<cmd>TroubleToggle<cr>";
+        action = "<cmd>Trouble diagnostics<cr>";
         options.desc = "Buffer diagnostics";
       }
       {
         mode = "n";
-        key = "<leader>cX";
-        action = "<cmd>TroubleToggle workspace_diagnostics<cr>";
-        options.desc = "Workspace diagnostics";
-      }
-      {
-        mode = "n";
-        key = "<leader>ct";
-        action = "<cmd>TroubleToggle todo<cr>";
-        options.desc = "Todo";
-      }
-      {
-        mode = "n";
-        key = "<leader>cq";
-        action = "<cmd>TodoQuickFix<cr>";
-        options.desc = "Quick fix list";
+        key = "<leader>cs";
+        action = "<cmd>Trouble symbols<cr>";
+        options.desc = "Buffer symbols";
       }
     ];
   };

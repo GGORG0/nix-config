@@ -92,7 +92,7 @@ _: {
 
       {
         mode = "n";
-        key = "<leader>cw";
+        key = "<leader>co";
         action = "<cmd>Lspsaga outline<CR>";
         options.desc = "Outline";
       }
