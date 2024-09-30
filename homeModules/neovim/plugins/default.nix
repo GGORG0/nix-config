@@ -18,6 +18,7 @@ _: {
     ./none-ls.nix
     ./notify.nix
     ./nvim-autopairs.nix
+    ./rustaceanvim.nix
     ./telescope.nix
     ./treesitter.nix
     ./trim.nix

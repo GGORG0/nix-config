@@ -8,22 +8,6 @@ _: {
     servers = {
       clangd.enable = true;
 
-      # maybe upgrade to rustaceanvim
-      rust-analyzer = {
-        enable = true;
-        installCargo = false;
-        installRustc = false;
-        settings = {
-          checkOnSave = true;
-          check.command = "clippy";
-          inlayHints = {
-            enable = true;
-            showParameterNames = true;
-          };
-          procMacro.enable = true;
-        };
-      };
-
       nil-ls = {
         enable = true;
         settings.formatting.command = [ "nixpkgs-fmt" ];
