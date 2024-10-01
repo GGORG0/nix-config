@@ -13,8 +13,6 @@
       dap.autoloadConfigurations = false;
 
       server.default_settings.rust-analyzer = {
-        cargo.features = "all";
-
         diagnostics = {
           enable = true;
           styleLints.enable = true;
@@ -22,10 +20,7 @@
 
         checkOnSave = true;
 
-        check = {
-          command = "clippy";
-          features = "all";
-        };
+        check.command = "clippy";
 
         files.excludeDirs = [
           ".cargo"
