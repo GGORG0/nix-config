@@ -11,7 +11,7 @@
 
     # Management of this flake
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-flake.url = "github:srid/nixos-flake";
+    nixos-unified.url = "github:srid/nixos-unified";
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -42,7 +42,7 @@
       systems = [ "x86_64-linux" "aarch64-linux" ];
 
       imports = [
-        inputs.nixos-flake.flakeModule
+        inputs.nixos-unified.flakeModule
         inputs.pre-commit-hooks.flakeModule
       ];
 
@@ -89,7 +89,7 @@
             , hostPlatform
             ,
             }:
-            self.nixos-flake.lib.mkLinuxSystem { home-manager = true; } {
+            self.nixos-unified.lib.mkLinuxSystem { home-manager = true; } {
               nixpkgs = {
                 inherit hostPlatform;
                 config.allowUnfree = true;
