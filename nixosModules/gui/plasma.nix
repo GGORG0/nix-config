@@ -10,8 +10,13 @@
   };
 
   config = lib.mkIf config.ggorg.gui.plasma.enable {
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+
+      settings.General.InputMethod = "qtvirtualkeyboard";
+    };
+
     services.desktopManager.plasma6.enable = true;
 
     # A little bit of debloating
@@ -22,6 +27,7 @@
 
     environment.systemPackages = with pkgs; [
       maliit-keyboard # on screen keyboard for plasma
+      kdePackages.qtvirtualkeyboard # a different on screen keyboard for plasma AND SDDM
     ];
 
     # Make Electron apps use Wayland
