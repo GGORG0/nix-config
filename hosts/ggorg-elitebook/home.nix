@@ -39,6 +39,9 @@
 
       # Drag-and-drop in terminal
       xdragon
+
+      # Local file sharing
+      localsend
     ];
   };
 

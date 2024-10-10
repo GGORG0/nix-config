@@ -23,6 +23,9 @@
 
       # Image editing
       gimp
+
+      # Local file sharing
+      localsend
     ];
   };
 
