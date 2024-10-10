@@ -8,12 +8,12 @@ _: {
     servers = {
       clangd.enable = true;
 
-      nil-ls = {
+      nil_ls = {
         enable = true;
         settings.formatting.command = [ "nixpkgs-fmt" ];
       };
 
-      ts-ls = {
+      ts_ls = {
         enable = false;
         filetypes = [
           "javascript"
@@ -49,7 +49,7 @@ _: {
         };
       };
 
-      ruff-lsp.enable = true;
+      ruff_lsp.enable = true;
 
       jsonls.enable = true;
       html.enable = true;
@@ -57,7 +57,7 @@ _: {
       eslint.enable = true;
 
       dockerls.enable = true;
-      docker-compose-language-service.enable = true;
+      docker_compose_language_service.enable = true;
 
       bashls.enable = true;
     };
