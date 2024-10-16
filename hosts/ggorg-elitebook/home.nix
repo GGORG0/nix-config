@@ -3,7 +3,7 @@
     # TODO: move to module
     packages = with pkgs; [
       # Messengers
-      armcord
+      legcord
       telegram-desktop
       element-desktop
 
