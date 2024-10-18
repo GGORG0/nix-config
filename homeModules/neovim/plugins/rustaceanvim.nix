@@ -33,8 +33,8 @@
         procMacro.enable = true;
 
         rustc.source = "discover";
+        rust.analyzerTargetDir = true;
       };
     };
   };
-
 }
