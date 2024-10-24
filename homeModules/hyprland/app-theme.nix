@@ -19,8 +19,8 @@
     xdg.configFile =
       let
         catppuccin-kvantum = pkgs.catppuccin-kvantum.override {
-          accent = "Blue";
-          variant = "Mocha";
+          accent = "blue";
+          variant = "mocha";
         };
       in
       {
