@@ -50,7 +50,7 @@
 
           clock = {
             interval = 1;
-            format = " {:L%H:%M:%S %d %b}";
+            format = "{:L%H:%M:%S %d %b} ";
             timezone = "Europe/Warsaw";
             locale = "pl_PL.UTF-8";
             tooltip-format = "<tt>{calendar}</tt>";
@@ -74,10 +74,11 @@
             "cpu"
             "memory"
             "backlight"
+            "custom/updates"
             "battery"
             "power-profiles-daemon"
             "custom/dunst"
-            "custom/audio_idle_inhibitor"
+            "privacy"
             "idle_inhibitor"
             "tray"
           ];
@@ -114,6 +115,20 @@
             format-icons = [ "" "" "" "" "" "" "" "" "" ];
           };
 
+          "custom/updates" = {
+            exec =
+              lib.getExe'
+                (pkgs.writeShellScriptBin "updates" ''
+                  set -euo pipefail
+
+                  text="$(curl "https://api.github.com/repos/NixOS/nixpkgs/compare/$(cat '/etc/os-release' | grep 'BUILD_ID' | sed -e 's/"//g' | awk -F '.' '{print $NF}')...nixos-unstable" | jq .ahead_by || echo -n '!')"
+
+                  echo "{\"text\": \"$text 󰏕\"}"
+                '') "updates";
+            return-type = "json";
+            interval = 1800;
+          };
+
           battery = {
             interval = 10;
             full-at = 95;
@@ -129,34 +144,12 @@
           };
 
           power-profiles-daemon = {
-            format = "{icon}";
+            format = "{icon} ";
             format-icons = {
-              performance = " ";
-              balanced = " ";
-              power-saver = " ";
+              performance = "";
+              balanced = "";
+              power-saver = "";
             };
-          };
-
-          privacy = {
-            icon-spacing = 10;
-            icon-size = 18;
-            modules = [
-              {
-                type = "screenshare";
-                tooltip = true;
-                tooltip-icon-size = 24;
-              }
-              {
-                type = "audio-out";
-                tooltip = true;
-                tooltip-icon-size = 24;
-              }
-              {
-                type = "audio-in";
-                tooltip = true;
-                tooltip-icon-size = 24;
-              }
-            ];
           };
 
           "custom/dunst" = {
@@ -165,46 +158,56 @@
                 (pkgs.writeShellScriptBin "dunst" ''
                   set -euo pipefail
 
-                  ENABLED=
-                  DISABLED=
-                  DISABLED_UNREAD=
+                  ENABLED=""
+                  DISABLED=""
+                  DISABLED_UNREAD=""
 
                   ${lib.getExe' pkgs.dbus "dbus-monitor"} path='/org/freedesktop/Notifications',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged' --profile |
                       while read -r _; do
                           PAUSED="$(${lib.getExe' pkgs.dunst "dunstctl"} is-paused)"
                           if [ "$PAUSED" == 'false' ]; then
-                              TEXT="$ENABLED "
+                              TEXT="$ENABLED"
                           else
-                              TEXT="$DISABLED "
+                              TEXT="$DISABLED"
                               COUNT="$(${lib.getExe' pkgs.dunst "dunstctl"} count waiting)"
                               if [ "$COUNT" != '0' ]; then
-                                  TEXT="$COUNT $DISABLED_UNREAD "
+                                  TEXT="$COUNT $DISABLED_UNREAD"
                               fi
                           fi
-                          printf '{"text": "%s"}\n' "$TEXT"
+                          printf '{"text": "%s "}\n' "$TEXT"
                       done
                 '') "dunst";
             return-type = "json";
             on-click = "${lib.getExe' pkgs.dunst "dunstctl"} set-paused toggle";
           };
 
-          "custom/audio_idle_inhibitor" = {
-            format = "{icon}";
-            exec = "${lib.getExe pkgs.sway-audio-idle-inhibit} --dry-print-both-waybar";
-            return-type = "json";
-            format-icons = {
-              output = "";
-              input = "";
-              output-input = "  ";
-              none = "";
-            };
+          privacy = {
+            icon-spacing = 10;
+            icon-size = 16;
+            modules = [
+              {
+                type = "screenshare";
+                tooltip = true;
+                tooltip-icon-size = 18;
+              }
+              {
+                type = "audio-out";
+                tooltip = true;
+                tooltip-icon-size = 18;
+              }
+              {
+                type = "audio-in";
+                tooltip = true;
+                tooltip-icon-size = 18;
+              }
+            ];
           };
 
           idle_inhibitor = {
-            format = "{icon}";
+            format = "{icon} ";
             format-icons = {
-              activated = " ";
-              deactivated = " ";
+              activated = "";
+              deactivated = "";
             };
           };
 
@@ -262,30 +265,22 @@
           color: @text;
         }
 
-        #window,
-        #clock,
-        #pulseaudio,
-        #cpu,
-        #memory,
-        #backlight,
-        #battery,
-        #power-profiles-daemon,
-        #custom-dunst,
-        #custom-audio_idle_inhibitor,
-        #idle_inhibitor,
-        #tray {
+        .modules-left,
+        .modules-center,
+        .modules-right {
           background-color: @surface0;
-          padding: 0.5rem 0.75rem;
-          margin: 5px 0;
+          border-radius: 1rem;
+          margin: .5rem;
+          padding: .1rem;
+        }
+
+        .module {
+          margin: 0 .75rem;
         }
 
         /* --- LEFT MODULES --- */
 
         #workspaces {
-          border-radius: 1rem 0px 0px 1rem;
-
-          margin: 5px 0 5px 5px;
-          padding-left: 0.3rem;
           background-color: @surface0;
         }
 
@@ -318,28 +313,30 @@
         }
 
         #window {
-          border-radius: 0px 1rem 1rem 0px;
           background-color: @surface0;
-          margin-right: 1rem;
+        }
+
+        /* see https://github.com/Alexays/Waybar/wiki/Module:-Sway#style-1 */
+        window#waybar.empty #window {
+          margin: 0;
+          padding: 0;
+          background: none;
         }
 
         /* --- CENTER MODULES --- */
 
         #clock {
-          border-radius: 1rem;
           color: @blue;
         }
 
         /* --- RIGHT MODULES --- */
 
         #pulseaudio {
-          color: @blue;
-          border-radius: 1rem 0px 0px 1rem;
-          margin-left: 1rem;
+          color: @lavender;
         }
 
         #cpu {
-          color: @lavender;
+          color: @blue;
         }
 
         #memory {
@@ -350,13 +347,12 @@
           color: @sky;
         }
 
-        #battery {
-          color: @green;
+        #custom-updates {
+          color: @teal;
         }
 
-        #battery.warning:not(.charging) {
-          background-color: @red;
-          color: @text;
+        #battery {
+          color: @green;
         }
 
         #power-profiles-daemon {
@@ -367,29 +363,18 @@
           color: @peach;
         }
 
-        #custom-audio_idle_inhibitor {
+        #privacy {
           color: @maroon;
+          padding: 0 .25rem;
         }
 
         #idle_inhibitor {
-          margin-right: 0.75rem;
-          border-radius: 0px 1rem 1rem 0px;
-        }
-
-        #idle_inhibitor.deactivated {
           color: @red;
-        }
-
-        #idle_inhibitor.activated {
-          color: @green;
         }
 
         /*---*/
 
         #tray {
-          margin-right: 0.75rem;
-          border-radius: 1rem;
-          margin: 5px 5px 5px 0;
         }
       '';
     };
