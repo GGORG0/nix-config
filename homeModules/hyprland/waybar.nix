@@ -50,7 +50,7 @@
 
           clock = {
             interval = 1;
-            format = "{:L%H:%M:%S %d %b} ";
+            format = "{:L%H:%M:%S %d %b}  ";
             timezone = "Europe/Warsaw";
             locale = "pl_PL.UTF-8";
             tooltip-format = "<tt>{calendar}</tt>";
@@ -87,7 +87,7 @@
             format = "{volume}% {icon} {format_source}";
             format-muted = " {format_source}";
 
-            format-bluetooth = "{volume}% {icon}  {format_source}";
+            format-bluetooth = "{volume}% {icon}   {format_source}";
             format-bluetooth-muted = "   {format_source}";
 
             format-source = "{volume}% ";
@@ -370,11 +370,6 @@
 
         #idle_inhibitor {
           color: @red;
-        }
-
-        /*---*/
-
-        #tray {
         }
       '';
     };
