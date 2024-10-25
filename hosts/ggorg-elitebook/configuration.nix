@@ -10,6 +10,7 @@
     development = {
       adb.enable = true;
       arduino.enable = true;
+      dotnet.enable = true;
       gcc.enable = true;
       python.enable = true;
       rust.enable = true;
