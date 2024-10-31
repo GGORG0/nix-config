@@ -8,6 +8,37 @@ _: {
     servers = {
       clangd.enable = true;
 
+      rust_analyzer = {
+        enable = true;
+        installCargo = false;
+        installRustc = false;
+        settings = {
+          diagnostics = {
+            enable = true;
+            styleLints.enable = true;
+          };
+
+          checkOnSave = true;
+
+          # check.command = "clippy";
+
+          files.excludeDirs = [
+            ".direnv"
+            ".git"
+            "node_modules"
+          ];
+
+          procMacro.enable = true;
+
+          # rustc.source = "discover";
+
+          inlayHints = {
+            enable = true;
+            showParameterNames = true;
+          };
+        };
+      };
+
       nil_ls = {
         enable = true;
         settings.formatting.command = [ "nixpkgs-fmt" ];
