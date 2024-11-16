@@ -127,6 +127,7 @@
                 '') "updates";
             return-type = "json";
             interval = 1800;
+            exec-on-event = "on-click";
           };
 
           battery = {
