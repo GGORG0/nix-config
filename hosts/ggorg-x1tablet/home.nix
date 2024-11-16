@@ -4,7 +4,7 @@
     packages = with pkgs; [
       # Messengers
       legcord
-      telegram-desktop
+      equibop
       element-desktop
 
       # LibreOffice
