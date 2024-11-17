@@ -13,6 +13,7 @@
     yq-go # yaml processer https://github.com/mikefarah/yq
     fzf # A command-line fuzzy finder
     xcp # a faster "cp" alternative
+    rename # bulk rename files easily
 
     # networking tools
     iperf3
