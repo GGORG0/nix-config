@@ -22,6 +22,7 @@ _: {
     ./treesitter.nix
     ./trim.nix
     ./trouble.nix
+    ./wakatime.nix
     ./web-devicons.nix
   ];
 }
