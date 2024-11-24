@@ -17,6 +17,8 @@ _: {
       shiftwidth = 2; # indenting inserts 2 spaces
       breakindent = true; # wrapped lines will preserve indentation
 
+      linebreak = true; # breaks lines on word boundaries
+
       mouse = "a"; # enables mouse everywhere
 
       undofile = true; # save undo history
