@@ -125,6 +125,7 @@
             [
               # Power/logout
               "${mod} SHIFT SUPERALT, escape, exit,"
+              "${mod} CTRL, escape, exec, ${lib.getExe' pkgs.systemd "systemctl"} suspend"
               "${mod}, O, exec, ${lib.getExe' pkgs.systemd "loginctl"} lock-session"
 
               # App shortcuts
@@ -145,6 +146,8 @@
               # Screenshots
               ", Print, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area"
               "CTRL, Print, exec, ${lib.getExe pkgs.grimblast} --notify copysave screen"
+              "SHIFT, Print, exec, ${lib.getExe pkgs.grimblast} --notify copysave output"
+              "ALT, Print, exec, ${lib.getExe pkgs.grimblast} --notify copysave active"
 
               # Window actions
               "${mod}, Q, killactive,"
