@@ -101,6 +101,8 @@
           misc = {
             disable_hyprland_logo = true; # hyprpaper covers it
 
+            vrr = 1;
+
             # just in case hypridle breaks... or something
             mouse_move_enables_dpms = true;
             key_press_enables_dpms = true;
