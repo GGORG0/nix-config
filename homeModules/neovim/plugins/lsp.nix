@@ -46,7 +46,7 @@ _: {
         };
 
         ts_ls = {
-          enable = false;
+          enable = true;
           filetypes = [
             "javascript"
             "javascriptreact"
@@ -81,7 +81,7 @@ _: {
           };
         };
 
-        ruff_lsp.enable = true;
+        ruff.enable = true;
 
         jsonls.enable = true;
         html.enable = true;
