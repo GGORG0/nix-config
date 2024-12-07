@@ -124,8 +124,6 @@
           bind =
             [
               # Power/logout
-              "${mod} SHIFT SUPERALT, escape, exit,"
-              "${mod} CTRL, escape, exec, ${lib.getExe' pkgs.systemd "systemctl"} suspend"
               "${mod}, O, exec, ${lib.getExe' pkgs.systemd "loginctl"} lock-session"
 
               # App shortcuts
@@ -148,6 +146,15 @@
               "CTRL, Print, exec, ${lib.getExe pkgs.grimblast} --notify copysave screen"
               "SHIFT, Print, exec, ${lib.getExe pkgs.grimblast} --notify copysave output"
               "ALT, Print, exec, ${lib.getExe pkgs.grimblast} --notify copysave active"
+              "${mod}, Print, exec, ${lib.getExe (pkgs.writeShellScriptBin "colorpicker" ''
+                set -euox pipefail
+
+                TEMPFILE="$(mktemp --suffix=.png)"
+                COLOR="$(${lib.getExe pkgs.hyprpicker} -an)"
+
+                ${lib.getExe pkgs.imagemagick} -size 32x32 xc:"$COLOR" "$TEMPFILE"
+                ${lib.getExe' pkgs.libnotify "notify-send"} -i "$TEMPFILE" -a hyprpicker "$COLOR"
+              '')}"
 
               # Window actions
               "${mod}, Q, killactive,"
@@ -254,6 +261,9 @@
             ", XF86AudioPause, exec, ${lib.getExe pkgs.playerctl} play-pause"
             ", XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
             ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
+
+            "${mod} SHIFT SUPERALT, escape, exit,"
+            "${mod} CTRL, escape, exec, ${lib.getExe' pkgs.systemd "systemctl"} suspend"
           ];
         };
     };
