@@ -58,7 +58,7 @@
     };
     neovim.enable = true;
     zsh.enable = true;
-    bibataCursor.enable = true;
+    catppuccinCursor.enable = true;
     git.enable = true;
   };
 }
