@@ -14,6 +14,7 @@
     ./nix-conf.nix
     ./obs.nix
     ./steam.nix
+    ./tailscale.nix
     ./user.nix
   ];
 }
