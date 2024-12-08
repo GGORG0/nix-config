@@ -15,7 +15,7 @@
       themeFile = "Catppuccin-Mocha";
       font = {
         name = "JetBrainsMono Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerd-fonts.jetbrains-mono;
       };
       settings = {
         background_opacity = "0.75";

@@ -25,7 +25,7 @@
         corefonts
         vistafonts
 
-        (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        nerd-fonts.jetbrains-mono
       ];
       fontconfig = {
         defaultFonts = {
