@@ -35,7 +35,7 @@
   ggorg = {
     neovim.enable = true;
     zsh.enable = true;
-    catppuccinCursor.enable = true;
+    cursor.enable = true;
     git.enable = true;
   };
 }
