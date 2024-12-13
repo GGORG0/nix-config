@@ -10,7 +10,7 @@
       name = lib.mkOption {
         type = lib.types.str;
         description = "The name of the cursor theme";
-        default = "catppuccin-mocha-dark-cursors";
+        default = "Bibata-Modern-Classic";
       };
 
       size = lib.mkOption {
@@ -22,10 +22,10 @@
       package = lib.mkOption {
         type = lib.types.package;
         description = "The package with the cursor theme";
-        default = pkgs.catppuccin-cursors.mochaDark;
+        default = pkgs.bibata-cursors;
       };
 
-      hyprcursor = lib.mkEnableOption "Hyprcursor" // { default = true; };
+      hyprcursor = lib.mkEnableOption "Hyprcursor" // { default = false; };
     };
   };
 
