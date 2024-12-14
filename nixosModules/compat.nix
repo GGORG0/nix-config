@@ -1,13 +1,14 @@
-{ config
-, lib
-, pkgs
-, flake
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  flake,
+  ...
 }: {
   options = {
     ggorg.compat = {
-      enable = lib.mkEnableOption "compatibility with non-NixOS programs" // { default = true; };
-      appimage = lib.mkEnableOption "AppImage compatibility" // { default = true; };
+      enable = lib.mkEnableOption "compatibility with non-NixOS programs" // {default = true;};
+      appimage = lib.mkEnableOption "AppImage compatibility" // {default = true;};
     };
   };
 

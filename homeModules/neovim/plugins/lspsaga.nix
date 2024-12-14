@@ -21,7 +21,7 @@ _: {
         numShortcut = true;
         keys = {
           exec = "<CR>";
-          quit = [ "<Esc>" "q" ];
+          quit = ["<Esc>" "q"];
         };
       };
       lightbulb = {
@@ -34,7 +34,7 @@ _: {
         autoSave = false;
         keys = {
           exec = "<CR>";
-          quit = [ "<C-k>" "<Esc>" ];
+          quit = ["<C-k>" "<Esc>"];
           select = "x";
         };
       };

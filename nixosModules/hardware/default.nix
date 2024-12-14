@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./bluetooth.nix
     ./em7455.nix

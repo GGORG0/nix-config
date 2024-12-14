@@ -7,7 +7,7 @@ _: {
       diagnostics = "nvim_lsp";
       hover = {
         enabled = true;
-        reveal = [ "close" ];
+        reveal = ["close"];
       };
     };
   };

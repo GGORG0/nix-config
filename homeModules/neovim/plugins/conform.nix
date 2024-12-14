@@ -54,8 +54,8 @@ _: {
             '';
           };
           nix = {
-            __unkeyed-1 = "nixpkgs-fmt";
-            __unkeyed-2 = "alejandra";
+            __unkeyed-1 = "alejandra";
+            __unkeyed-2 = "nixpkgs-fmt";
             stop_after_first = true;
           };
           markdown = [
@@ -64,7 +64,7 @@ _: {
               "prettier"
             ]
           ];
-          rust = [ "rustfmt" ];
+          rust = ["rustfmt"];
         };
         default_format_opts.lsp_format = "fallback";
         format_on_save = {

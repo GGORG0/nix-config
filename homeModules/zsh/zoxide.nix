@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }: {
   options = {
     ggorg.zsh.zoxide.enable = lib.mkEnableOption "Zoxide";

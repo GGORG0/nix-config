@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }: {
   options = {
     ggorg.hardware.lmsensors = {
@@ -10,6 +11,6 @@
   };
 
   config = lib.mkIf config.ggorg.hardware.lmsensors.enable {
-    environment.systemPackages = [ pkgs.lm_sensors ];
+    environment.systemPackages = [pkgs.lm_sensors];
   };
 }

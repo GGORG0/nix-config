@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }: {
   options = {
     ggorg.hardware.qmk = {
@@ -11,7 +12,7 @@
 
   config = lib.mkIf config.ggorg.hardware.qmk.enable {
     hardware.keyboard.qmk.enable = true; # udev rules
-    ggorg.user.extraGroups = [ "plugdev" ];
-    environment.systemPackages = [ pkgs.qmk ];
+    ggorg.user.extraGroups = ["plugdev"];
+    environment.systemPackages = [pkgs.qmk];
   };
 }

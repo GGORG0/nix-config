@@ -1,6 +1,7 @@
-{ lib
-, config
-, ...
+{
+  lib,
+  config,
+  ...
 }: {
   imports = [
     ./aliases.nix

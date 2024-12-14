@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }: {
   options = {
     ggorg.hyprland.waybar = {
@@ -92,7 +93,7 @@
             format-source = "{volume}% ";
             format-source-muted = "";
 
-            format-icons = [ "" "" "" ];
+            format-icons = ["" "" ""];
 
             on-click = "${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-mute @DEFAULT_SINK@ toggle";
             on-click-right = lib.getExe pkgs.pavucontrol;
@@ -111,19 +112,19 @@
 
           backlight = {
             format = "{percent}% {icon}";
-            format-icons = [ "" "" "" "" "" "" "" "" "" ];
+            format-icons = ["" "" "" "" "" "" "" "" ""];
           };
 
           "custom/updates" = {
             exec =
               lib.getExe'
-                (pkgs.writeShellScriptBin "updates" ''
-                  set -euo pipefail
+              (pkgs.writeShellScriptBin "updates" ''
+                set -euo pipefail
 
-                  text="$(curl "https://api.github.com/repos/NixOS/nixpkgs/compare/$(cat '/etc/os-release' | grep 'BUILD_ID' | sed -e 's/"//g' | awk -F '.' '{print $NF}')...nixos-unstable" | jq .ahead_by || echo -n '!')"
+                text="$(curl "https://api.github.com/repos/NixOS/nixpkgs/compare/$(cat '/etc/os-release' | grep 'BUILD_ID' | sed -e 's/"//g' | awk -F '.' '{print $NF}')...nixos-unstable" | jq .ahead_by || echo -n '!')"
 
-                  echo "{\"text\": \"$text 󰏕\"}"
-                '') "updates";
+                echo "{\"text\": \"$text 󰏕\"}"
+              '') "updates";
             return-type = "json";
             interval = 1800;
             exec-on-event = "on-click";
@@ -139,7 +140,7 @@
             format = "{capacity}% {icon}";
             format-charging = "{capacity}% 󰂄";
             format-plugged = "{capacity}% ";
-            format-icons = [ "󱃍" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹" ];
+            format-icons = ["󱃍" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹"];
             tooltip-format = "{capacity}%\n{timeTo}\n{power} W";
           };
 
@@ -155,28 +156,28 @@
           "custom/dunst" = {
             exec =
               lib.getExe'
-                (pkgs.writeShellScriptBin "dunst" ''
-                  set -euo pipefail
+              (pkgs.writeShellScriptBin "dunst" ''
+                set -euo pipefail
 
-                  ENABLED=""
-                  DISABLED=""
-                  DISABLED_UNREAD=""
+                ENABLED=""
+                DISABLED=""
+                DISABLED_UNREAD=""
 
-                  ${lib.getExe' pkgs.dbus "dbus-monitor"} path='/org/freedesktop/Notifications',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged' --profile |
-                      while read -r _; do
-                          PAUSED="$(${lib.getExe' pkgs.dunst "dunstctl"} is-paused)"
-                          if [ "$PAUSED" == 'false' ]; then
-                              TEXT="$ENABLED"
-                          else
-                              TEXT="$DISABLED"
-                              COUNT="$(${lib.getExe' pkgs.dunst "dunstctl"} count waiting)"
-                              if [ "$COUNT" != '0' ]; then
-                                  TEXT="$COUNT $DISABLED_UNREAD"
-                              fi
-                          fi
-                          printf '{"text": "%s "}\n' "$TEXT"
-                      done
-                '') "dunst";
+                ${lib.getExe' pkgs.dbus "dbus-monitor"} path='/org/freedesktop/Notifications',interface='org.freedesktop.DBus.Properties',member='PropertiesChanged' --profile |
+                    while read -r _; do
+                        PAUSED="$(${lib.getExe' pkgs.dunst "dunstctl"} is-paused)"
+                        if [ "$PAUSED" == 'false' ]; then
+                            TEXT="$ENABLED"
+                        else
+                            TEXT="$DISABLED"
+                            COUNT="$(${lib.getExe' pkgs.dunst "dunstctl"} count waiting)"
+                            if [ "$COUNT" != '0' ]; then
+                                TEXT="$COUNT $DISABLED_UNREAD"
+                            fi
+                        fi
+                        printf '{"text": "%s "}\n' "$TEXT"
+                    done
+              '') "dunst";
             return-type = "json";
             on-click = "${lib.getExe' pkgs.dunst "dunstctl"} set-paused toggle";
           };

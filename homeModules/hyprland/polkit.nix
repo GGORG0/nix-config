@@ -1,7 +1,8 @@
-{ pkgs
-, config
-, lib
-, ...
+{
+  pkgs,
+  config,
+  lib,
+  ...
 }: {
   options = {
     ggorg.hyprland.polkit = {
@@ -18,7 +19,7 @@
     systemd.user.services.polkit-gnome-authentication-agent-1 = lib.mkIf config.ggorg.hyprland.polkit.enable {
       Unit = {
         Description = "GNOME Polkit Authentication Agent";
-        PartOf = [ config.ggorg.hyprland.polkit.systemdTarget ];
+        PartOf = [config.ggorg.hyprland.polkit.systemdTarget];
       };
 
       Service = {
@@ -26,7 +27,7 @@
         Restart = "on-failure";
       };
 
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = ["graphical-session.target"];
     };
   };
 }

@@ -1,7 +1,8 @@
-{ lib
-, pkgs
-, config
-, ...
+{
+  lib,
+  pkgs,
+  config,
+  ...
 }: {
   options = {
     ggorg.hyprland.dunst = {
@@ -71,6 +72,6 @@
       };
     };
 
-    home.packages = [ pkgs.libnotify ];
+    home.packages = [pkgs.libnotify];
   };
 }

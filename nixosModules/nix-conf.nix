@@ -1,6 +1,7 @@
-{ lib
-, flake
-, ...
+{
+  lib,
+  flake,
+  ...
 }: {
   nix = {
     # Make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
@@ -8,7 +9,7 @@
     channel.enable = false; # disable nix-channel, we use flakes instead.
 
     # Make `nix repl '<nixpkgs>'` use the same nixpkgs as the one used by this flake.
-    nixPath = [ "/etc/nix/inputs" ];
+    nixPath = ["/etc/nix/inputs"];
 
     settings = {
       # Enable flakes and the 'nix' command
@@ -17,8 +18,8 @@
       auto-optimise-store = true;
 
       # Enable Hyprland's Cachix
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
 
     # Perform garbage collection weekly to maintain low disk usage

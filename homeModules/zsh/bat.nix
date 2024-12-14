@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }: {
   options = {
     ggorg.zsh.bat.enable = lib.mkEnableOption "Bat";
@@ -11,7 +12,7 @@
     # cat replacement with syntax highlighting
     programs.bat = {
       enable = true;
-      extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batpipe prettybat batwatch ];
+      extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batpipe prettybat batwatch];
     };
 
     home.shellAliases.cat = "bat";

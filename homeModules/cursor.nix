@@ -1,7 +1,8 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }: {
   options = {
     ggorg.cursor = {
@@ -25,37 +26,36 @@
         default = pkgs.bibata-cursors;
       };
 
-      hyprcursor = lib.mkEnableOption "Hyprcursor" // { default = false; };
+      hyprcursor = lib.mkEnableOption "Hyprcursor" // {default = false;};
     };
   };
 
-  config =
-    lib.mkIf config.ggorg.cursor.enable {
-      home.packages = [
-        config.ggorg.cursor.package
-      ];
+  config = lib.mkIf config.ggorg.cursor.enable {
+    home.packages = [
+      config.ggorg.cursor.package
+    ];
 
-      home.pointerCursor = {
-        inherit (config.ggorg.cursor) package name size;
-        gtk.enable = true;
-        x11.enable = true;
-      };
-
-      xdg.dataFile."icons/${config.ggorg.cursor.name}".source = "${config.ggorg.cursor.package}/share/icons/${config.ggorg.cursor.name}";
-
-      wayland.windowManager.hyprland.settings = lib.mkIf config.ggorg.cursor.hyprcursor {
-        env = [
-          "HYPRCURSOR_THEME,${config.ggorg.cursor.name}"
-          "HYPRCURSOR_SIZE,${builtins.toString config.ggorg.cursor.size}"
-        ];
-        exec-once = [
-          "hyprctl setcursor ${config.ggorg.cursor.name} ${toString config.ggorg.cursor.size}"
-        ];
-      };
-
-      home.sessionVariables = lib.mkIf config.ggorg.cursor.hyprcursor {
-        HYPRCURSOR_THEME = config.ggorg.cursor.name;
-        HYPRCURSOR_SIZE = builtins.toString config.ggorg.cursor.size;
-      };
+    home.pointerCursor = {
+      inherit (config.ggorg.cursor) package name size;
+      gtk.enable = true;
+      x11.enable = true;
     };
+
+    xdg.dataFile."icons/${config.ggorg.cursor.name}".source = "${config.ggorg.cursor.package}/share/icons/${config.ggorg.cursor.name}";
+
+    wayland.windowManager.hyprland.settings = lib.mkIf config.ggorg.cursor.hyprcursor {
+      env = [
+        "HYPRCURSOR_THEME,${config.ggorg.cursor.name}"
+        "HYPRCURSOR_SIZE,${builtins.toString config.ggorg.cursor.size}"
+      ];
+      exec-once = [
+        "hyprctl setcursor ${config.ggorg.cursor.name} ${toString config.ggorg.cursor.size}"
+      ];
+    };
+
+    home.sessionVariables = lib.mkIf config.ggorg.cursor.hyprcursor {
+      HYPRCURSOR_THEME = config.ggorg.cursor.name;
+      HYPRCURSOR_SIZE = builtins.toString config.ggorg.cursor.size;
+    };
+  };
 }

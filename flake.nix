@@ -37,114 +37,111 @@
     };
   };
 
-  outputs = inputs @ { self, ... }:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+  outputs = inputs @ {self, ...}:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux"];
 
       imports = [
         inputs.nixos-unified.flakeModule
         inputs.pre-commit-hooks.flakeModule
       ];
 
-      perSystem =
-        { self'
-        , config
-        , pkgs
-        , ...
-        }: {
-          packages.default = self'.packages.activate;
+      perSystem = {
+        self',
+        config,
+        pkgs,
+        ...
+      }: {
+        packages.default = self'.packages.activate;
 
-          formatter = pkgs.nixpkgs-fmt;
+        formatter = pkgs.alejandra;
 
-          pre-commit.settings = {
-            hooks = {
-              nixpkgs-fmt.enable = true;
-              statix.enable = true;
-              deadnix.enable = true;
-              nil.enable = true;
-            };
-          };
-
-          devShells.default = pkgs.mkShell {
-            shellHook = ''
-              ${config.pre-commit.installationScript}
-            '';
-
-            packages = with pkgs; [
-              nixpkgs-fmt # formatter
-              statix # linter
-              deadnix # scan for dead code
-              nil # language server
-            ];
+        pre-commit.settings = {
+          hooks = {
+            alejandra.enable = true;
+            statix.enable = true;
+            deadnix.enable = true;
+            nil.enable = true;
           };
         };
 
-      flake =
-        let
-          username = "ggorg";
-          stateVersion = "24.05";
+        devShells.default = pkgs.mkShell {
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
 
-          mkNixosSystem =
-            { hostname
-            , hostPlatform
-            ,
-            }:
-            self.nixos-unified.lib.mkLinuxSystem { home-manager = true; } {
-              nixpkgs = {
-                inherit hostPlatform;
-                config.allowUnfree = true;
-              };
+          packages = with pkgs; [
+            alejandra # formatter
+            statix # linter
+            deadnix # scan for dead code
+            nil # language server
+          ];
+        };
+      };
 
-              system = {
-                inherit stateVersion;
-              };
+      flake = let
+        username = "ggorg";
+        stateVersion = "24.05";
 
-              networking.hostName = hostname;
+        mkNixosSystem = {
+          hostname,
+          hostPlatform,
+        }:
+          self.nixos-unified.lib.mkLinuxSystem {home-manager = true;} {
+            nixpkgs = {
+              inherit hostPlatform;
+              config.allowUnfree = true;
+            };
 
-              imports = [
-                ./hosts/${hostname}/configuration.nix
-                ./nixosModules
+            system = {
+              inherit stateVersion;
+            };
 
-                {
-                  home-manager = {
-                    users.${username} = {
-                      home = {
-                        inherit stateVersion;
-                      };
+            networking.hostName = hostname;
 
-                      # Nicely reload system units when changing configs
-                      systemd.user.startServices = "sd-switch";
+            imports = [
+              ./hosts/${hostname}/configuration.nix
+              ./nixosModules
 
-                      nixpkgs.config = {
-                        allowUnfree = true;
-                        # Workaround for https://github.com/nix-community/home-manager/issues/2942
-                        allowUnfreePredicate = _: true;
-                      };
-
-                      imports = [
-                        ./hosts/${hostname}/home.nix
-                        ./homeModules
-                      ];
+              {
+                home-manager = {
+                  users.${username} = {
+                    home = {
+                      inherit stateVersion;
                     };
 
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
+                    # Nicely reload system units when changing configs
+                    systemd.user.startServices = "sd-switch";
+
+                    nixpkgs.config = {
+                      allowUnfree = true;
+                      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+                      allowUnfreePredicate = _: true;
+                    };
+
+                    imports = [
+                      ./hosts/${hostname}/home.nix
+                      ./homeModules
+                    ];
                   };
-                }
-              ];
-            };
-        in
-        {
-          nixosConfigurations = {
-            ggorg-elitebook = mkNixosSystem {
-              hostname = "ggorg-elitebook";
-              hostPlatform = "x86_64-linux";
-            };
-            ggorg-x1tablet = mkNixosSystem {
-              hostname = "ggorg-x1tablet";
-              hostPlatform = "x86_64-linux";
-            };
+
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                };
+              }
+            ];
+          };
+      in {
+        nixosConfigurations = {
+          ggorg-elitebook = mkNixosSystem {
+            hostname = "ggorg-elitebook";
+            hostPlatform = "x86_64-linux";
+          };
+          ggorg-x1tablet = mkNixosSystem {
+            hostname = "ggorg-x1tablet";
+            hostPlatform = "x86_64-linux";
           };
         };
+      };
     };
 }

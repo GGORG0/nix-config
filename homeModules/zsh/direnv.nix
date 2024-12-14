@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }: {
   options = {
     ggorg.zsh.direnv.enable = lib.mkEnableOption "direnv";

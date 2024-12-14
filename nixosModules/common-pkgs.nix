@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # archives
     zip
@@ -58,5 +58,5 @@
 
   # Not really a package, but fixes ZSH completion for system packages
   # See home-manager programs.zsh.enableCompletion
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = ["/share/zsh"];
 }

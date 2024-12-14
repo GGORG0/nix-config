@@ -1,7 +1,8 @@
-{ config
-, lib
-, flake
-, ...
+{
+  config,
+  lib,
+  flake,
+  ...
 }: {
   imports = [
     flake.inputs.nix-index-database.hmModules.nix-index
@@ -9,7 +10,7 @@
 
   options = {
     ggorg.nix-index = {
-      enable = lib.mkEnableOption "nix-index, comma and databases" // { default = true; };
+      enable = lib.mkEnableOption "nix-index, comma and databases" // {default = true;};
     };
   };
 

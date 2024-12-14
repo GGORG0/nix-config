@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }: {
   options = {
     ggorg.gui.fonts = {
@@ -29,7 +30,7 @@
       ];
       fontconfig = {
         defaultFonts = {
-          monospace = [ "JetBrainsMono Nerd Font" ];
+          monospace = ["JetBrainsMono Nerd Font"];
         };
       };
     };

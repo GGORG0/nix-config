@@ -1,11 +1,12 @@
-{ lib
-, config
-, ...
+{
+  lib,
+  config,
+  ...
 }: {
   options = {
     ggorg.boot = {
       systemd-boot = {
-        enable = lib.mkEnableOption "systemd-boot" // { default = true; };
+        enable = lib.mkEnableOption "systemd-boot" // {default = true;};
         timeout = lib.mkOption {
           type = lib.types.int;
           description = "Timeout (in seconds) until loader boots the default menu item";

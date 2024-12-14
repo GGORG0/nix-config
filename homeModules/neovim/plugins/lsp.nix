@@ -42,7 +42,7 @@ _: {
 
         nil_ls = {
           enable = true;
-          settings.formatting.command = [ "nixpkgs-fmt" ];
+          settings.formatting.command = ["alejandra"];
         };
 
         ts_ls = {
@@ -96,13 +96,15 @@ _: {
         slint_lsp.enable = true;
       };
     };
-    autoCmd = [{
-      event = [
-        "BufRead"
-        "BufNewFile"
-      ];
-      pattern = [ "*.slint" ];
-      command = "set filetype=slint";
-    }];
+    autoCmd = [
+      {
+        event = [
+          "BufRead"
+          "BufNewFile"
+        ];
+        pattern = ["*.slint"];
+        command = "set filetype=slint";
+      }
+    ];
   };
 }

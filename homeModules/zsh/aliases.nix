@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }: {
   options = {
     ggorg.zsh.aliases.enable = lib.mkEnableOption "shell aliases";

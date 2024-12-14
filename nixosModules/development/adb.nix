@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }: {
   options = {
     ggorg.development.adb = {
@@ -10,6 +11,6 @@
 
   config = lib.mkIf config.ggorg.development.adb.enable {
     programs.adb.enable = true;
-    ggorg.user.extraGroups = [ "adbusers" ];
+    ggorg.user.extraGroups = ["adbusers"];
   };
 }

@@ -9,7 +9,7 @@ _: {
     };
     keymaps = [
       {
-        mode = [ "n" "v" ];
+        mode = ["n" "v"];
         key = "<leader>gh";
         action = "gitsigns";
         options.desc = "+hunks";
@@ -39,13 +39,13 @@ _: {
         options.desc = "Reset buffer";
       }
       {
-        mode = [ "n" "v" ];
+        mode = ["n" "v"];
         key = "<leader>ghr";
         action = ":Gitsigns reset_hunk<CR>";
         options.desc = "Reset hunk";
       }
       {
-        mode = [ "n" "v" ];
+        mode = ["n" "v"];
         key = "<leader>ghs";
         action = ":Gitsigns stage_hunk<CR>";
         options.desc = "Stage hunk";

@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }: {
   options = {
     ggorg.docker = {
@@ -10,6 +11,6 @@
 
   config = lib.mkIf config.ggorg.docker.enable {
     virtualisation.docker.enable = true;
-    ggorg.user.extraGroups = [ "docker" ];
+    ggorg.user.extraGroups = ["docker"];
   };
 }
