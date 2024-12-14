@@ -1,4 +1,8 @@
-_: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   # Language server - completion, error checking, etc.
   programs.nixvim = {
     plugins.lsp = {
@@ -42,7 +46,7 @@ _: {
 
         nil_ls = {
           enable = true;
-          settings.formatting.command = ["alejandra"];
+          settings.formatting.command = [(lib.getExe pkgs.alejandra)];
         };
 
         ts_ls = {
