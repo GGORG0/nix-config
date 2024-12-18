@@ -4,6 +4,7 @@ _: {
     ./catppuccin.nix
     ./cmp-cmdline.nix
     ./cmp.nix
+    ./colorizer.nix
     ./comment.nix
     ./conform.nix
     ./crates-nvim.nix
@@ -13,6 +14,8 @@ _: {
     ./lsp.nix
     ./lspsaga.nix
     ./lualine.nix
+    ./markdown-preview.nix
+    ./mini.nix
     ./neogit.nix
     ./noice.nix
     ./none-ls.nix
@@ -23,6 +26,7 @@ _: {
     ./treesitter.nix
     ./trim.nix
     ./trouble.nix
+    ./ts-autotag.nix
     ./wakatime.nix
     ./web-devicons.nix
   ];
