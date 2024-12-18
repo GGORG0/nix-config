@@ -58,34 +58,33 @@
             "typescriptreact"
           ];
           extraOptions = {
-            settings = {
+            settings = let
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true;
+                includeInlayFunctionLikeReturnTypeHints = true;
+                includeInlayFunctionParameterTypeHints = true;
+                includeInlayParameterNameHints = "all";
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true;
+                includeInlayPropertyDeclarationTypeHints = true;
+                includeInlayVariableTypeHints = true;
+              };
+            in {
               javascript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true;
-                  includeInlayFunctionLikeReturnTypeHints = true;
-                  includeInlayFunctionParameterTypeHints = true;
-                  includeInlayParameterNameHints = "all";
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                  includeInlayPropertyDeclarationTypeHints = true;
-                  includeInlayVariableTypeHints = true;
-                };
+                inherit inlayHints;
               };
               typescript = {
-                inlayHints = {
-                  includeInlayEnumMemberValueHints = true;
-                  includeInlayFunctionLikeReturnTypeHints = true;
-                  includeInlayFunctionParameterTypeHints = true;
-                  includeInlayParameterNameHints = "all";
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = true;
-                  includeInlayPropertyDeclarationTypeHints = true;
-                  includeInlayVariableTypeHints = true;
-                };
+                inherit inlayHints;
               };
             };
           };
         };
 
+        tailwindcss.enable = true;
+
         ruff.enable = true;
+
+        taplo.enable = true;
+        yamlls.enable = true;
 
         jsonls.enable = true;
         html.enable = true;
