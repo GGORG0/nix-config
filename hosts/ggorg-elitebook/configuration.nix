@@ -14,6 +14,7 @@
       dotnet.enable = true;
       flutter.enable = true;
       gcc.enable = true;
+      nodejs.enable = true;
       python.enable = true;
       rust.enable = true;
     };
