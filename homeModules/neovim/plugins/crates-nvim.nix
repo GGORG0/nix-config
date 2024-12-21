@@ -1,6 +1,6 @@
 _: {
   # Rust crate management + LSP server for completion
-  programs.nixvim.plugins.crates-nvim = {
+  programs.nixvim.plugins.crates = {
     enable = true;
 
     extraOptions = {
