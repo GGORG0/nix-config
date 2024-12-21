@@ -105,7 +105,7 @@ _: {
       }
 
       {
-        mode = "n";
+        mode = ["n" "v"];
         key = "<leader>ca";
         action = "<cmd>Lspsaga code_action<CR>";
         options.desc = "Code action";
