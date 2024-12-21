@@ -11,9 +11,12 @@
   };
 
   config = lib.mkIf config.ggorg.development.android.enable {
-    environment.systemPackages = with pkgs; [
-      android-studio
-      sdkmanager
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        android-studio
+        sdkmanager
+      ];
+      sessionVariables.ANDROID_HOME = "$HOME/Android/Sdk/";
+    };
   };
 }
