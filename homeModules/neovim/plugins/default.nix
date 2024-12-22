@@ -8,7 +8,6 @@ _: {
     ./comment.nix
     ./conform.nix
     ./crates-nvim.nix
-    ./flutter-tools.nix
     ./gitsigns.nix
     ./illuminate.nix
     ./indent-blankline.nix
