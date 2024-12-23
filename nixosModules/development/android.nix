@@ -15,6 +15,7 @@
       systemPackages = with pkgs; [
         android-studio
         sdkmanager
+        jdk21
       ];
       sessionVariables.ANDROID_HOME = "$HOME/Android/Sdk/";
     };

@@ -14,6 +14,9 @@
     fzf # A command-line fuzzy finder
     xcp # a faster "cp" alternative
     rename # bulk rename files easily
+    dust # a way cooler "du" alternative
+    dua-cli # an interactive TUI disk usage analyzer
+    mprocs # a manager for long-running processes
 
     # networking tools
     iperf3
