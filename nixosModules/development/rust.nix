@@ -27,6 +27,7 @@
       cargo-udeps
       cargo-sort
       bacon
+      evcxr
     ];
   };
 }
