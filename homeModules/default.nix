@@ -7,5 +7,6 @@
     ./git.nix
     ./nix-index.nix
     ./syncthing.nix
+    ./vscodium.nix
   ];
 }

@@ -60,5 +60,6 @@
     zsh.enable = true;
     cursor.enable = true;
     git.enable = true;
+    vscodium.enable = true;
   };
 }
