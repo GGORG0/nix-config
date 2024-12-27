@@ -17,6 +17,7 @@
     dust # a way cooler "du" alternative
     dua # an interactive TUI disk usage analyzer
     mprocs # a manager for long-running processes
+    urlencode
 
     # networking tools
     iperf3
