@@ -13,6 +13,7 @@
       libreoffice-fresh
       hunspell
       hunspellDicts.pl-pl
+      hunspellDicts.en-us
 
       # Better calculator
       qalculate-gtk
