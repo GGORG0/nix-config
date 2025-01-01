@@ -29,6 +29,8 @@
         tab_title_max_length = 25;
         tab_title_template = "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
         window_padding_width = "5";
+        touch_scroll_multiplier = 2;
+        cursor_trail = 100;
       };
       shellIntegration = {
         mode = "enabled";
