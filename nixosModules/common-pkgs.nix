@@ -52,6 +52,11 @@
     usbutils # lsusb
 
     nix-output-monitor
+
+    # Nix language servers
+    nil
+    nixd
+    alejandra # formatter
   ];
 
   # TODO: extract to module

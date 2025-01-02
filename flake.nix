@@ -91,6 +91,7 @@
             nixpkgs = {
               inherit hostPlatform;
               config.allowUnfree = true;
+              overlays = [inputs.rust-overlay.overlays.default];
             };
 
             system = {

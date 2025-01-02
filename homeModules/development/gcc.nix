@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.ggorg.development.gcc.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       gcc
       gnumake
       cmake

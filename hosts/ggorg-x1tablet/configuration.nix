@@ -4,18 +4,12 @@
   ];
 
   ggorg = {
-    development = {
-      adb.enable = true;
-      arduino.enable = true;
-      gcc.enable = true;
-      python.enable = true;
-      rust.enable = true;
-    };
     gui = {
       fonts.enable = true;
       plasma.enable = true;
     };
     hardware = {
+      adb.enable = true;
       bluetooth.enable = true;
       em7455.enable = true;
       hpPrinter.enable = true;

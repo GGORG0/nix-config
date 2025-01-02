@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.ggorg.development.dotnet.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       dotnet-sdk_8
     ];
   };

@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./adb.nix
     ./android.nix
     ./arduino.nix
     ./dotnet.nix

@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./adb.nix
     ./bluetooth.nix
     ./em7455.nix
     ./hpPrinter.nix

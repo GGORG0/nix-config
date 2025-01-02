@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./development
     ./gui
     ./hardware
     ./boot.nix

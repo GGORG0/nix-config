@@ -11,8 +11,8 @@
   };
 
   config = lib.mkIf config.ggorg.development.android.enable {
-    environment = {
-      systemPackages = with pkgs; [
+    home = {
+      packages = with pkgs; [
         android-studio
         sdkmanager
         jdk21

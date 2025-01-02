@@ -34,6 +34,12 @@
   # --------------------
 
   ggorg = {
+    development = {
+      arduino.enable = true;
+      gcc.enable = true;
+      python.enable = true;
+      rust.enable = true;
+    };
     neovim.enable = true;
     zsh.enable = true;
     cursor.enable = true;

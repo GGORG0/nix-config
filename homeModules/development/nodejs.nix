@@ -11,7 +11,7 @@
   };
 
   config = lib.mkIf config.ggorg.development.nodejs.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       nodejs
       yarn-berry
       pnpm

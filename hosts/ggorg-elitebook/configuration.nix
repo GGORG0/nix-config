@@ -7,22 +7,13 @@
   boot.initrd.luks.devices."luks-61a90f5f-e22d-4c85-ba0d-8f3c83dd90a8".device = "/dev/disk/by-uuid/61a90f5f-e22d-4c85-ba0d-8f3c83dd90a8";
 
   ggorg = {
-    development = {
-      adb.enable = true;
-      android.enable = true;
-      arduino.enable = true;
-      dotnet.enable = true;
-      gcc.enable = true;
-      nodejs.enable = true;
-      python.enable = true;
-      rust.enable = true;
-    };
     gui = {
       fonts.enable = true;
       hyprland.enable = true;
       greetd.enable = true;
     };
     hardware = {
+      adb.enable = true;
       bluetooth.enable = true;
       hpPrinter.enable = true;
       libinput.enable = true;

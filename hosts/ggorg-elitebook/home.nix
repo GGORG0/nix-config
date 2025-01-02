@@ -50,6 +50,15 @@
   # --------------------
 
   ggorg = {
+    development = {
+      android.enable = true;
+      arduino.enable = true;
+      dotnet.enable = true;
+      gcc.enable = true;
+      nodejs.enable = true;
+      python.enable = true;
+      rust.enable = true;
+    };
     hyprland = {
       enable = true;
       monitors = [
