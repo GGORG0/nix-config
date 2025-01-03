@@ -32,6 +32,8 @@
           bacon
           evcxr
           watchexec
+
+          sccache
         ]
         ++ (lib.lists.optionals (pkgs.system == "x86_64-linux") [
           mold
