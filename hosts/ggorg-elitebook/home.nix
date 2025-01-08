@@ -32,7 +32,7 @@
       spotube
 
       # PCB editor
-      kicad
+      kicad-small
 
       # Drag-and-drop in terminal
       xdragon
