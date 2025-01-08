@@ -15,6 +15,7 @@
     home.packages = with pkgs; [
       libsForQt5.qtstyleplugin-kvantum
       qt6Packages.qtstyleplugin-kvantum
+      kdePackages.qtstyleplugin-kvantum
     ];
 
     xdg.configFile = let

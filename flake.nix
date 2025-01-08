@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO: REMOVE THIS
+    # Temporary fix for https://github.com/NixOS/nixpkgs/issues/370011
+    # Relevant until https://github.com/NixOS/nixpkgs/pull/370637 gets merged to nixos-unstable
+    nixpkgs-xsane-fix.url = "github:timhae/nixpkgs/fix-build-failure";
+
     # Management of this flake
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";
@@ -91,7 +96,15 @@
             nixpkgs = {
               inherit hostPlatform;
               config.allowUnfree = true;
-              overlays = [inputs.rust-overlay.overlays.default];
+              overlays = [
+                inputs.rust-overlay.overlays.default
+
+                # TODO: REMOVE THIS
+                # Temporary fix for xsane
+                (_final: (prev: {
+                  inherit (import inputs.nixpkgs-xsane-fix {inherit (prev) system;}) xsane;
+                }))
+              ];
             };
 
             system = {
