@@ -7,6 +7,7 @@
     ./compat.nix
     ./docker.nix
     ./gnupg.nix
+    ./keyring.nix
     ./libvirt.nix
     ./locale.nix
     ./network.nix

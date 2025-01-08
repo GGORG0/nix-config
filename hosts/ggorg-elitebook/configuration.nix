@@ -43,5 +43,6 @@
     obs.enable = true;
     steam.enable = true;
     tailscale.enable = true;
+    keyring.enable = true;
   };
 }

@@ -40,6 +40,7 @@
     obs.enable = false;
     steam.enable = false;
     tailscale.enable = true;
+    keyring.enable = true;
   };
 
   # Disable wakeup from the magnetic keyboard
