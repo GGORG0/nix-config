@@ -19,6 +19,9 @@
         noto-fonts-emoji
         liberation_ttf
         roboto
+        inter
+        rubik
+        poppins
         ubuntu_font_family
 
         twemoji-color-font
