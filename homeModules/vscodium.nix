@@ -13,5 +13,9 @@
       inherit (config.ggorg.vscodium) enable;
       package = pkgs.vscodium;
     };
+
+    home.packages = lib.mkIf config.ggorg.vscodium.enable [
+      pkgs.clang-tools
+    ];
   };
 }
