@@ -132,7 +132,6 @@
 
           battery = {
             interval = 10;
-            full-at = 95;
             states = {
               warning = 30;
               critical = 15;
