@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    ggorg.vscodium.enable = lib.mkEnableOption "Git" // {default = true;};
+    ggorg.vscodium.enable = lib.mkEnableOption "VSCodium";
   };
 
   config = {
