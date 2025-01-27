@@ -18,7 +18,7 @@
         wallpaper = [",${./wallpaper.png}"];
 
         ipc = false;
-        splash = true;
+        splash = false;
         splash_offset = 1.0;
       };
     };
