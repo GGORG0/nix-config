@@ -3,7 +3,6 @@
     # TODO: move to module
     packages = with pkgs; [
       # Messengers
-      equibop
       element-desktop
 
       # LibreOffice
@@ -45,5 +44,6 @@
     cursor.enable = true;
     git.enable = true;
     vscodium.enable = true;
+    discord.enable = true;
   };
 }

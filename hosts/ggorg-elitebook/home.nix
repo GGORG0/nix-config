@@ -3,8 +3,8 @@
     # TODO: move to module
     packages = with pkgs; [
       # Messengers
-      equibop
       element-desktop
+      fractal
 
       # Gaming
       prismlauncher
@@ -71,5 +71,6 @@
     cursor.enable = true;
     git.enable = true;
     vscodium.enable = true;
+    discord.enable = true;
   };
 }
