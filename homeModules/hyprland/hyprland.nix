@@ -40,6 +40,8 @@
             drag_lock = true;
             tap-and-drag = true;
           };
+
+          tablet.output = "current";
         };
 
         general = {
