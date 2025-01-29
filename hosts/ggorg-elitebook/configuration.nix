@@ -15,6 +15,7 @@
     hardware = {
       adb.enable = true;
       bluetooth.enable = true;
+      fprint.enable = true;
       hpPrinter.enable = true;
       libinput.enable = true;
       lmsensors.enable = true;

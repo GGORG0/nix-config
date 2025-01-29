@@ -24,6 +24,8 @@
           ignore_empty_input = true;
         };
 
+        auth.fingerprint.enabled = true;
+
         background = [
           {
             monitor = "";
@@ -65,6 +67,38 @@
             shadow_boost = 2;
 
             font_size = 25;
+            font_family = font;
+          }
+          {
+            monitor = "";
+            position = "-20, -20";
+            halign = "right";
+            valign = "top";
+
+            # battery
+            text = "cmd[update:10000] echo \"󰁾 $(cat /sys/class/power_supply/BAT0/capacity)% $(cat /sys/class/power_supply/BAT0/status | cut -c 1)\"";
+
+            color = text;
+            shadow_passes = 1;
+            shadow_boost = 2;
+
+            font_size = 15;
+            font_family = font;
+          }
+          {
+            monitor = "";
+            position = "0, -75";
+            halign = "center";
+            valign = "center";
+
+            # fingerprint prompt
+            text = "$FPRINTPROMPT";
+
+            color = text;
+            shadow_passes = 1;
+            shadow_boost = 2;
+
+            font_size = 15;
             font_family = font;
           }
         ];

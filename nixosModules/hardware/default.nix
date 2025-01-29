@@ -3,6 +3,7 @@
     ./adb.nix
     ./bluetooth.nix
     ./em7455.nix
+    ./fprint.nix
     ./hpPrinter.nix
     ./iioSensors.nix
     ./libinput.nix
