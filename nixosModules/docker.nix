@@ -16,12 +16,14 @@
     virtualisation.podman = {
       enable = true;
       dockerCompat = true;
-      extraPackages = [pkgs.podman-compose];
       defaultNetwork.settings.dns_enabled = true;
     };
 
     ggorg.user.extraGroups = ["podman"];
 
-    environment.systemPackages = [pkgs.distrobox];
+    environment.systemPackages = [
+      pkgs.distrobox
+      pkgs.podman-compose
+    ];
   };
 }
