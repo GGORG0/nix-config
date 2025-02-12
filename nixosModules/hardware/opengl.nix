@@ -18,10 +18,16 @@
       enable = true;
       extraPackages = with pkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+        intel-vaapi-driver # LIBVA_DRIVER_NAME=i965
         libvdpau-va-gl
+        intel-media-sdk
+        vpl-gpu-rt
+
+        libva
+        vaapiVdpau
+        intel-compute-runtime
       ];
     };
-    environment.sessionVariables = {LIBVA_DRIVER_NAME = "iHD";}; # Force intel-media-driver
+    environment.sessionVariables.LIBVA_DRIVER_NAME = "iHD"; # Force intel-media-driver
   };
 }
