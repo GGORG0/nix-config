@@ -39,6 +39,13 @@
 
       # Local file sharing
       localsend
+
+      # Useful for debugging and reverse engineering
+      httptoolkit
+      mitmproxy
+
+      # Merge, slice, rearrange PDF pages
+      pdfslicer
     ];
   };
 
