@@ -18,6 +18,8 @@
     dua # an interactive TUI disk usage analyzer
     mprocs # a manager for long-running processes
     urlencode
+    sendme # easy p2p e2ee file sharing based on the iroh network
+    dumbpipe # a unix pipe running over the iroh network
 
     # networking tools
     iperf3
