@@ -1,5 +1,4 @@
 {
-  pkgs,
   config,
   lib,
   ...
@@ -31,12 +30,5 @@
     # UDisks2 and Gnome Virtual File Systems
     services.udisks2.enable = true;
     services.gvfs.enable = true;
-
-    environment.systemPackages = with pkgs; [
-      nemo-with-extensions # TODO: replace with yazi
-      file-roller
-      nsxiv # TODO: replace with imv or nomacs
-      mpv
-    ];
   };
 }

@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./apps.nix
     ./app-theme.nix
     ./blueman-applet.nix
     ./clipman.nix
@@ -29,6 +30,7 @@
   config = lib.mkIf config.ggorg.hyprland.enable {
     # Enable other components
     ggorg.hyprland = {
+      apps.defaultEnable = lib.mkDefault true;
       appTheme.enable = lib.mkDefault true;
       bluemanApplet.enable = lib.mkDefault true;
       clipman.enable = lib.mkDefault true;
