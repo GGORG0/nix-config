@@ -3,9 +3,11 @@ _: {
   programs.nixvim.plugins.notify = {
     enable = true;
 
-    stages = "slide";
-    timeout = 2500;
-    topDown = true;
-    # render = {__raw = "\"wrapped-compact\"";};
+    settings = {
+      stages = "slide";
+      timeout = 2500;
+      topDown = true;
+      # render = {__raw = "\"wrapped-compact\"";};
+    };
   };
 }
