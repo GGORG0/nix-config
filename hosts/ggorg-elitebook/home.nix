@@ -46,6 +46,9 @@
 
       # Merge, slice, rearrange PDF pages
       pdfslicer
+
+      # You know what this is, right?
+      osu-lazer-bin
     ];
   };
 
