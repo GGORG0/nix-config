@@ -3,6 +3,7 @@
     ./adb.nix
     ./bluetooth.nix
     ./em7455.nix
+    ./flipper.nix
     ./fprint.nix
     ./hpPrinter.nix
     ./iioSensors.nix
