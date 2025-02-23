@@ -95,7 +95,10 @@
           self.nixos-unified.lib.mkLinuxSystem {home-manager = true;} {
             nixpkgs = {
               inherit hostPlatform;
-              config.allowUnfree = true;
+              config = {
+                allowUnfree = true;
+                allowUnfreePredicate = _: true;
+              };
               overlays = [
                 inputs.rust-overlay.overlays.default
 
@@ -128,12 +131,6 @@
 
                     # Nicely reload system units when changing configs
                     systemd.user.startServices = "sd-switch";
-
-                    nixpkgs.config = {
-                      allowUnfree = true;
-                      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-                      allowUnfreePredicate = _: true;
-                    };
 
                     imports = [
                       ./hosts/${hostname}/home.nix
