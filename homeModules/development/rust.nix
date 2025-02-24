@@ -29,6 +29,7 @@
           cargo-wipe
           cargo-sweep
           cargo-expand
+          cargo-generate
           bacon
           evcxr
           watchexec
