@@ -23,7 +23,7 @@
     services.udev.packages = [pkgs.sane-airscan];
 
     environment.systemPackages = with pkgs; [
-      skanlite
+      kdePackages.skanlite
       xsane
     ];
   };
