@@ -140,6 +140,7 @@
 
                   useGlobalPkgs = true;
                   useUserPackages = true;
+                  backupFileExtension = "hmbak";
                 };
               }
             ];
