@@ -39,6 +39,7 @@
 
       # Local file sharing
       localsend
+      warp
 
       # Useful for debugging and reverse engineering
       httptoolkit
