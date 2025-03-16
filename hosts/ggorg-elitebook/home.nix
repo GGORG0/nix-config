@@ -50,6 +50,12 @@
 
       # You know what this is, right?
       osu-lazer-bin
+
+      # Doing stuff with audio and video
+      ffmpeg-full
+
+      # Audio editor
+      tenacity
     ];
   };
 
