@@ -56,9 +56,6 @@
 
       # Audio editor
       tenacity
-
-      # Brave browser for when I need to use Chromium-only APIs
-      brave
     ];
   };
 
