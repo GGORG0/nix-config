@@ -151,6 +151,10 @@
             hostname = "ggorg-elitebook";
             hostPlatform = "x86_64-linux";
           };
+          ggorg-x395 = mkNixosSystem {
+            hostname = "ggorg-x395";
+            hostPlatform = "x86_64-linux";
+          };
         };
       };
     };
