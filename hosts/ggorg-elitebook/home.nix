@@ -88,6 +88,7 @@
     cursor.enable = true;
     git.enable = true;
     gnupg.enable = true;
+    ssh.enable = true;
     vscodium.enable = true;
     discord.enable = true;
   };

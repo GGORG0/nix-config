@@ -9,6 +9,7 @@
     ./git.nix
     ./gnupg.nix
     ./nix-index.nix
+    ./ssh.nix
     ./syncthing.nix
     ./vscodium.nix
   ];
