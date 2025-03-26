@@ -10,7 +10,10 @@
     gui = {
       fonts.enable = true;
       hyprland.enable = true;
-      greetd.enable = true;
+      greetd = {
+        enable = true;
+        autologin = true;
+      };
     };
     hardware = {
       adb.enable = true;

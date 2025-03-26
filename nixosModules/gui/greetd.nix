@@ -11,17 +11,24 @@
         type = lib.types.str;
         description = "The command to launch on login";
       };
+      autologin = lib.mkEnableOption "automatic login";
     };
   };
 
   config = {
-    services.greetd = {
+    services.greetd = let
+      command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${config.ggorg.gui.greetd.target}";
+    in {
       inherit (config.ggorg.gui.greetd) enable;
       restart = true;
 
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${config.ggorg.gui.greetd.target}";
+          inherit command;
+        };
+        initial_session = lib.mkIf config.ggorg.gui.greetd.autologin {
+          inherit command;
+          user = config.ggorg.user.username;
         };
       };
     };
