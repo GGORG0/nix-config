@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module?ref=release-2.92";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Management of this flake
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-unified.url = "github:srid/nixos-unified";

@@ -3,6 +3,10 @@
   flake,
   ...
 }: {
+  imports = [
+    flake.inputs.lix-module.nixosModules.default
+  ];
+
   nix = {
     # Make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
     registry.nixpkgs.flake = flake.inputs.nixpkgs;
