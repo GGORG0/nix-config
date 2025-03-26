@@ -129,7 +129,10 @@
 
                     xdg = {
                       enable = true;
-                      userDirs.enable = true;
+                      userDirs = {
+                        enable = true;
+                        createDirectories = true;
+                      };
                     };
 
                     # Nicely reload system units when changing configs
