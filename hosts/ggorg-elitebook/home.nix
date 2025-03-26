@@ -87,6 +87,7 @@
     zsh.enable = true;
     cursor.enable = true;
     git.enable = true;
+    gnupg.enable = true;
     vscodium.enable = true;
     discord.enable = true;
   };
