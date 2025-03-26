@@ -264,22 +264,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-xsane-fix": {
-      "locked": {
-        "lastModified": 1735916995,
-        "narHash": "sha256-THHvmHPow9eWPXpZsrMVE2GktV2dH+Fl19whTH9bRBw=",
-        "owner": "timhae",
-        "repo": "nixpkgs",
-        "rev": "2715ad4bcfd507767ebb3dcc7b4af92dad63e872",
-        "type": "github"
-      },
-      "original": {
-        "owner": "timhae",
-        "ref": "fix-build-failure",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1742889210,
@@ -401,7 +385,6 @@
         "nix-index-database": "nix-index-database_2",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-xsane-fix": "nixpkgs-xsane-fix",
         "nixvim": "nixvim",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay"
