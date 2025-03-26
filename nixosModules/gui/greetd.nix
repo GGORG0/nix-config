@@ -16,18 +16,14 @@
   };
 
   config = {
-    services.greetd = let
-      command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${config.ggorg.gui.greetd.target}";
-    in {
+    services.greetd = {
       inherit (config.ggorg.gui.greetd) enable;
       restart = true;
 
       settings = {
-        default_session = {
-          inherit command;
-        };
+        default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${config.ggorg.gui.greetd.target}";
         initial_session = lib.mkIf config.ggorg.gui.greetd.autologin {
-          inherit command;
+          command = config.ggorg.gui.greetd.target;
           user = config.ggorg.user.username;
         };
       };
