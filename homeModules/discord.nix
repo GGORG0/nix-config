@@ -10,7 +10,7 @@
 
   config = {
     home.packages = lib.mkIf config.ggorg.discord.enable [
-      pkgs.goofcord
+      pkgs.legcord
     ];
   };
 }
