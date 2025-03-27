@@ -90,5 +90,6 @@
     ssh.enable = true;
     vscodium.enable = true;
     discord.enable = true;
+    btop.enable = true;
   };
 }

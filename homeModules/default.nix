@@ -4,6 +4,7 @@
     ./hyprland
     ./neovim
     ./zsh
+    ./btop.nix
     ./cursor.nix
     ./discord.nix
     ./git.nix

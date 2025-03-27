@@ -45,7 +45,6 @@
 
     # system monitoring
     htop
-    btop
     lsof
 
     # system tools
