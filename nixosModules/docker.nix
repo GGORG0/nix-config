@@ -1,29 +1,20 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   options = {
     ggorg.docker = {
-      enable = lib.mkEnableOption "Podman w/Docker compatibility";
+      enable = lib.mkEnableOption "Docker";
     };
   };
 
   config = lib.mkIf config.ggorg.docker.enable {
-    virtualisation.containers.enable = true;
-
-    virtualisation.podman = {
+    virtualisation.docker = {
       enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
+      autoPrune.enable = true;
     };
 
-    ggorg.user.extraGroups = ["podman"];
-
-    environment.systemPackages = [
-      pkgs.distrobox
-      pkgs.podman-compose
-    ];
+    ggorg.user.extraGroups = ["docker"];
   };
 }
