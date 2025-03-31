@@ -28,7 +28,7 @@
       in {
         "*".setEnv.TERM = "xterm-256color"; # Not everything has xterm-kitty terminfo installed
 
-        pi = simpleHost "server-pi.local";
+        pi = simpleHost "192.168.1.98";
         x395 = simpleHost "ggorg-x395.local";
         elitebook = simpleHost "ggorg-elitebook.local";
       };
