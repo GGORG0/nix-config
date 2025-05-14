@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   options = {
@@ -9,7 +10,14 @@
     };
   };
 
-  config = lib.mkIf config.ggorg.hardware.libinput.enable {
+  config = lib.mkIf config.ggorg.hardware.libinput.enable (let
+    libinputPkg = pkgs.libinput.override {eventGUISupport = true;};
+  in {
     services.libinput.enable = true;
-  };
+    environment.systemPackages = [
+      libinputPkg
+    ];
+
+    ggorg.user.extraGroups = ["input"];
+  });
 }
