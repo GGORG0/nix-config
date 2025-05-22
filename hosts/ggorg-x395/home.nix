@@ -59,7 +59,7 @@
 
       # Kubernetes
       kubectl
-      helm
+      kubernetes-helm
     ];
   };
 
