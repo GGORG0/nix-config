@@ -56,6 +56,9 @@
 
       # Audio editor
       tenacity
+
+      # Kubernetes
+      kubectl
     ];
   };
 
