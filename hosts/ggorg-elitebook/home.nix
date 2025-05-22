@@ -59,6 +59,7 @@
 
       # Kubernetes
       kubectl
+      helm
     ];
   };
 
