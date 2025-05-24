@@ -24,6 +24,7 @@
       libinput.enable = true;
       lmsensors.enable = true;
       opengl.enable = true;
+      platformio.enable = true;
       power.enable = true;
       qmk.enable = true;
       saleae.enable = true;

@@ -10,6 +10,7 @@
     ./libinput.nix
     ./lmsensors.nix
     ./opengl.nix
+    ./platformio.nix
     ./power.nix
     ./qmk.nix
     ./saleae.nix
