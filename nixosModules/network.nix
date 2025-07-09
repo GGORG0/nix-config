@@ -8,6 +8,7 @@
       enable = lib.mkEnableOption "NetworkManager" // {default = true;};
       firewall.enable = lib.mkEnableOption "system firewall" // {default = false;};
       ssh.enable = lib.mkEnableOption "OpenSSH server" // {default = true;};
+      avahi.enable = lib.mkEnableOption "Avahi daemon" // {default = true;};
     };
   };
 
@@ -36,5 +37,10 @@
     ggorg.user.extraGroups = ["networkmanager"];
 
     services.openssh.enable = config.ggorg.network.ssh.enable;
+
+    services.avahi = {
+      inherit (config.ggorg.network.avahi) enable;
+      nssmdns4 = true;
+    };
   };
 }
