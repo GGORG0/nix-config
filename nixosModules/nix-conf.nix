@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    flake.inputs.lix-module.nixosModules.default
+    flake.inputs.lix-module.nixosModules.lixFromNixpkgs
   ];
 
   nix = {
