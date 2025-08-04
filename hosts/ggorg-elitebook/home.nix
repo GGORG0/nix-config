@@ -76,6 +76,7 @@
       arduino.enable = true;
       dotnet.enable = true;
       gcc.enable = true;
+      godot.enable = true;
       nodejs.enable = true;
       python.enable = true;
       rust.enable = true;
