@@ -20,7 +20,6 @@
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         intel-vaapi-driver # LIBVA_DRIVER_NAME=i965
         libvdpau-va-gl
-        intel-media-sdk
         vpl-gpu-rt
 
         libva
