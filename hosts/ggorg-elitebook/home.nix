@@ -22,8 +22,9 @@
       rnote
 
       # Image editing
-      gimp
+      gimp3-with-plugins
       inkscape
+      aseprite
 
       # Screen mirroring from Android
       scrcpy
