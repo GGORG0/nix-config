@@ -30,15 +30,36 @@
       mime.enable = true;
       mimeApps = rec {
         enable = true;
-        defaultApplications = {
-          "inode/directory" = ["nemo.desktop"];
-          "application/x-archive" = ["org.gnome.FileRoller.desktop"];
-          "application/zip" = ["org.gnome.FileRoller.desktop"];
-          "image/*" = ["org.nomacs.ImageLounge.desktop"];
-          "video/*" = ["vlc.desktop"];
-
-          "application/pdf" = ["librewolf.desktop"];
-        };
+        defaultApplications = let
+          imageTypes = [
+            "avif"
+            "bmp"
+            "gif"
+            "heic"
+            "heif"
+            "jpeg"
+            "jxl"
+            "png"
+            "tiff"
+            "webp"
+            "x-eps"
+            "x-ico"
+            "x-portable-bitmap"
+            "x-portable-graymap"
+            "x-portable-pixmap"
+            "x-xbitmap"
+            "x-xpixmap"
+          ];
+          imageApps = lib.genAttrs imageTypes (_: ["org.nomacs.ImageLounge.desktop"]);
+        in
+          imageApps
+          // {
+            "inode/directory" = ["nemo.desktop"];
+            "application/x-archive" = ["org.gnome.FileRoller.desktop"];
+            "application/zip" = ["org.gnome.FileRoller.desktop"];
+            "application/pdf" = ["librewolf.desktop"];
+            "x-scheme-handler/terminal" = ["kitty.desktop"];
+          };
         associations.added = defaultApplications;
       };
     };
