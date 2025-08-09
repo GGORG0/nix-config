@@ -109,6 +109,10 @@
           key_press_enables_dpms = true;
         };
 
+        windowrule = [
+          "tile, class:Aseprite"
+        ];
+
         workspace =
           builtins.genList
           (
