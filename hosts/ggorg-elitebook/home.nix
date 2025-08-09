@@ -5,6 +5,7 @@
       # Messengers
       element-desktop
       fractal
+      slack
 
       # Gaming
       prismlauncher
@@ -30,7 +31,7 @@
       scrcpy
 
       # Music player
-      spotube
+      spotify
 
       # PCB editor
       kicad-small
