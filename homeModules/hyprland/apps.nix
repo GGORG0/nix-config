@@ -50,7 +50,8 @@
             "x-xbitmap"
             "x-xpixmap"
           ];
-          imageApps = lib.genAttrs imageTypes (_: ["org.nomacs.ImageLounge.desktop"]);
+          imageMimeTypes = map (t: "image/" + t) imageTypes;
+          imageApps = lib.genAttrs imageMimeTypes (_: ["org.nomacs.ImageLounge.desktop"]);
         in
           imageApps
           // {
