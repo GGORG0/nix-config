@@ -15,6 +15,7 @@
   config = lib.mkIf config.ggorg.compat.enable {
     environment.systemPackages = [
       pkgs.steam-run
+      pkgs.wine-staging
 
       flake.inputs.nix-alien.packages.${pkgs.system}.nix-alien
     ];
