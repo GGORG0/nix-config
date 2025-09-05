@@ -33,7 +33,7 @@
       ];
       fontconfig = {
         defaultFonts = {
-          monospace = ["JetBrainsMono Nerd Font"];
+          monospace = ["JetBrainsMono Nerd Font Mono"];
         };
       };
     };

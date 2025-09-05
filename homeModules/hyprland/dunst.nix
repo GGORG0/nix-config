@@ -30,7 +30,7 @@
 
           idle_threshold = 120;
 
-          font = "JetBrainsMono Nerd Font 12";
+          font = "JetBrainsMono Nerd Font Mono 12";
           format = "<small>%a</small>\\n<b>%s</b>\\n%b";
 
           alignment = "right";

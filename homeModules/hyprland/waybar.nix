@@ -43,6 +43,12 @@
             on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
           };
 
+          "hyprland/window" = {
+            icon = true;
+            icon-size = 16;
+            separate-outputs = true;
+          };
+
           # --- CENTER MODULES ---
           modules-center = [
             "clock"
@@ -50,7 +56,7 @@
 
           clock = {
             interval = 1;
-            format = "{:L%H:%M:%S %d %b}  ";
+            format = "{:L%H:%M:%S %a %d %b} ";
             timezone = "Europe/Warsaw";
             locale = "pl_PL.UTF-8";
             tooltip-format = "<tt>{calendar}</tt>";
@@ -70,11 +76,11 @@
 
           # --- RIGHT MODULES ---
           modules-right = [
-            "pulseaudio"
+            "wireplumber"
             "cpu"
             "memory"
+            "disk"
             "backlight"
-            "custom/updates"
             "battery"
             "power-profiles-daemon"
             "custom/dunst"
@@ -83,20 +89,17 @@
             "tray"
           ];
 
-          pulseaudio = {
+          wireplumber = {
             format = "{volume}% {icon} {format_source}";
             format-muted = " {format_source}";
-
-            format-bluetooth = "{volume}% {icon}   {format_source}";
-            format-bluetooth-muted = "   {format_source}";
 
             format-source = "{volume}% ";
             format-source-muted = "";
 
             format-icons = ["" "" ""];
 
-            on-click = "${lib.getExe' pkgs.pulseaudio "pactl"} set-sink-mute @DEFAULT_SINK@ toggle";
-            on-click-right = lib.getExe pkgs.pavucontrol;
+            on-click = "${lib.getExe' pkgs.wireplumber "wpctl"} set-sink-mute @DEFAULT_SINK@ toggle";
+            on-click-right = lib.getExe pkgs.pwvucontrol;
             on-click-middle = lib.getExe pkgs.helvum;
           };
 
@@ -110,24 +113,15 @@
             format = "{percentage}% ";
           };
 
+          disk = {
+            path = "/";
+            format = "{percentage_used}% ";
+            tooltip-format = "{free} free of {total}";
+          };
+
           backlight = {
             format = "{percent}% {icon}";
             format-icons = ["" "" "" "" "" "" "" "" ""];
-          };
-
-          "custom/updates" = {
-            exec =
-              lib.getExe'
-              (pkgs.writeShellScriptBin "updates" ''
-                set -euo pipefail
-
-                text="$(curl "https://api.github.com/repos/NixOS/nixpkgs/compare/$(cat '/etc/os-release' | grep 'BUILD_ID' | sed -e 's/"//g' | awk -F '.' '{print $NF}')...nixos-unstable" | jq .ahead_by || echo -n '!')"
-
-                echo "{\"text\": \"$text 󰏕\"}"
-              '') "updates";
-            return-type = "json";
-            interval = 1800;
-            exec-on-event = "on-click";
           };
 
           battery = {
@@ -174,7 +168,7 @@
                                 TEXT="$COUNT $DISABLED_UNREAD"
                             fi
                         fi
-                        printf '{"text": "%s "}\n' "$TEXT"
+                        printf '{"text": "%s"}\n' "$TEXT"
                     done
               '') "dunst";
             return-type = "json";
@@ -184,34 +178,25 @@
           privacy = {
             icon-spacing = 10;
             icon-size = 16;
-            modules = [
-              {
-                type = "screenshare";
-                tooltip = true;
-                tooltip-icon-size = 18;
-              }
-              {
-                type = "audio-out";
-                tooltip = true;
-                tooltip-icon-size = 18;
-              }
-              {
-                type = "audio-in";
-                tooltip = true;
-                tooltip-icon-size = 18;
-              }
-            ];
+            modules = map (type: {
+              inherit type;
+              tooltip = true;
+              tooltip-icon-size = 18;
+            }) ["screenshare" "audio-out" "audio-in"];
           };
 
           idle_inhibitor = {
-            format = "{icon} ";
+            format = "{icon}";
             format-icons = {
               activated = "";
               deactivated = "";
             };
           };
 
-          tray.spacing = 10;
+          tray = {
+            spacing = 10;
+            icon-size = 16;
+          };
         }
       ];
 
@@ -255,8 +240,8 @@
 
         /* --- GENERAL --- */
         * {
-          font-family: JetBrainsMono Nerd Font;
-          font-size: 13px;
+          font-family: 'JetBrainsMono Nerd Font Propo';
+          font-size: 14px;
           min-height: 0;
         }
 
@@ -265,17 +250,26 @@
           color: @text;
         }
 
+        tooltip {
+          background-color: @surface0;
+          border: 1px solid @overlay0;
+        }
+
+        tooltip label {
+          color: @text;
+        }
+
         .modules-left,
         .modules-center,
         .modules-right {
           background-color: @surface0;
-          border-radius: 1rem;
-          margin: .5rem;
+          border-radius: 10px;
+          margin: 10px 10px 0 10px;
           padding: .1rem;
         }
 
         .module {
-          margin: 0 .75rem;
+          margin: 0 .5rem;
         }
 
         /* --- LEFT MODULES --- */
@@ -343,11 +337,11 @@
           color: @sapphire;
         }
 
-        #backlight {
+        #disk {
           color: @sky;
         }
 
-        #custom-updates {
+        #backlight {
           color: @teal;
         }
 

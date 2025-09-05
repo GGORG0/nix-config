@@ -14,7 +14,7 @@
       text = "rgb(cdd6f4)";
       accent = "rgb(89b4fa)";
       accentAlpha = "89b4fa";
-      font = "JetBrainsMono Nerd Font";
+      font = "JetBrainsMono Nerd Font Mono";
     in {
       inherit (config.ggorg.hyprland.hyprlock) enable;
 

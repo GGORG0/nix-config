@@ -21,7 +21,7 @@
       restart = true;
 
       settings = {
-        default_session.command = "${lib.getExe pkgs.greetd.tuigreet} --cmd ${config.ggorg.gui.greetd.target}";
+        default_session.command = "${lib.getExe pkgs.tuigreet} --cmd ${config.ggorg.gui.greetd.target}";
         initial_session = lib.mkIf config.ggorg.gui.greetd.autologin {
           command = config.ggorg.gui.greetd.target;
           user = config.ggorg.user.username;

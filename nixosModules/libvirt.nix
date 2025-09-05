@@ -11,7 +11,12 @@
   };
 
   config = lib.mkIf config.ggorg.libvirt.enable {
-    virtualisation.libvirtd.enable = true;
+    virtualisation.libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+      onShutdown = "shutdown";
+    };
+
     ggorg.user.extraGroups = ["libvirtd" "kvm"];
 
     boot.extraModprobeConfig = ''

@@ -15,7 +15,7 @@
       inherit (config.ggorg.hyprland.rofi) enable;
       package = pkgs.rofi-wayland;
 
-      font = "JetBrainsMono Nerd Font 14";
+      font = "JetBrainsMono Nerd Font Mono 14";
       terminal = lib.getExe config.programs.kitty.package;
 
       plugins = with pkgs; [rofi-calc rofi-power-menu];

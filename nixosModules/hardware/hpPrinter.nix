@@ -14,6 +14,7 @@
     services.printing = {
       enable = true;
       drivers = [pkgs.hplipWithPlugin];
+      startWhenNeeded = true;
     };
 
     hardware.sane.enable = true;

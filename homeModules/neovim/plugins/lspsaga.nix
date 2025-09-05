@@ -3,56 +3,59 @@ _: {
   programs.nixvim = {
     plugins.lspsaga = {
       enable = true;
-      beacon.enable = true;
-      ui = {
-        border = "rounded";
-        codeAction = "💡";
-      };
-      diagnostic = {
-        borderFollow = true;
-        diagnosticOnlyCurrent = false;
-        showCodeAction = true;
-      };
-      symbolInWinbar.enable = true;
-      codeAction = {
-        extendGitSigns = true;
-        showServerName = true;
-        onlyInCursor = true;
-        numShortcut = true;
-        keys = {
-          exec = "<CR>";
-          quit = ["<Esc>" "q"];
+
+      settings = {
+        beacon.enable = true;
+        ui = {
+          border = "rounded";
+          codeAction = "💡";
         };
-      };
-      lightbulb = {
-        enable = true;
-        sign = true;
-        virtualText = false;
-      };
-      implement.enable = false;
-      rename = {
-        autoSave = false;
-        keys = {
-          exec = "<CR>";
-          quit = ["<C-k>" "<Esc>"];
-          select = "x";
+        diagnostic = {
+          borderFollow = true;
+          diagnosticOnlyCurrent = false;
+          showCodeAction = true;
         };
-      };
-      outline = {
-        autoClose = true;
-        autoPreview = true;
-        closeAfterJump = true;
-        layout = "normal"; # normal or float
-        winPosition = "right"; # left or right
-        keys = {
-          jump = "e";
-          quit = "q";
-          toggleOrJump = "o";
+        symbolInWinbar.enable = true;
+        codeAction = {
+          extendGitSigns = true;
+          showServerName = true;
+          onlyInCursor = true;
+          numShortcut = true;
+          keys = {
+            exec = "<CR>";
+            quit = ["<Esc>" "q"];
+          };
         };
-      };
-      scrollPreview = {
-        scrollDown = "<C-f>";
-        scrollUp = "<C-b>";
+        lightbulb = {
+          enable = true;
+          sign = true;
+          virtualText = false;
+        };
+        implement.enable = false;
+        rename = {
+          autoSave = false;
+          keys = {
+            exec = "<CR>";
+            quit = ["<C-k>" "<Esc>"];
+            select = "x";
+          };
+        };
+        outline = {
+          autoClose = true;
+          autoPreview = true;
+          closeAfterJump = true;
+          layout = "normal"; # normal or float
+          winPosition = "right"; # left or right
+          keys = {
+            jump = "e";
+            quit = "q";
+            toggleOrJump = "o";
+          };
+        };
+        scrollPreview = {
+          scrollDown = "<C-f>";
+          scrollUp = "<C-b>";
+        };
       };
     };
     keymaps = [

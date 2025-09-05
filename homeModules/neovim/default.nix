@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    flake.inputs.nixvim.homeManagerModules.nixvim
+    flake.inputs.nixvim.homeModules.nixvim
 
     ./plugins
     ./options.nix

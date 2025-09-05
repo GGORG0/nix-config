@@ -13,8 +13,6 @@
     programs.ssh = lib.mkIf config.ggorg.ssh.enable {
       enable = true;
 
-      forwardAgent = true;
-
       matchBlocks = let
         forwardGPG = {remote-uid ? 1000}: {
           bind.address = "/run/user/1000/gnupg/S.gpg-agent.extra";
@@ -26,7 +24,10 @@
           remoteForwards = [(forwardGPG {})];
         };
       in {
-        "*".setEnv.TERM = "xterm-256color"; # Not everything has xterm-kitty terminfo installed
+        "*" = {
+          setEnv.TERM = "xterm-256color"; # Not everything has xterm-kitty terminfo installed
+          forwardAgent = true;
+        };
 
         pi = simpleHost "192.168.1.98";
         x395 = simpleHost "ggorg-x395.local";

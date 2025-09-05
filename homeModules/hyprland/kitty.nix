@@ -15,7 +15,7 @@
       inherit (config.ggorg.hyprland.kitty) enable;
       themeFile = "Catppuccin-Mocha";
       font = {
-        name = "JetBrainsMono Nerd Font";
+        name = "JetBrainsMono Nerd Font Mono";
         package = pkgs.nerd-fonts.jetbrains-mono;
       };
       settings = {

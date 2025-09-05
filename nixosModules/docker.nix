@@ -13,6 +13,7 @@
     virtualisation.docker = {
       enable = true;
       autoPrune.enable = true;
+      enableOnBoot = false;
     };
 
     ggorg.user.extraGroups = ["docker"];
