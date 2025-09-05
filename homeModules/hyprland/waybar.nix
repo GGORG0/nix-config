@@ -98,7 +98,7 @@
 
             format-icons = ["" "" ""];
 
-            on-click = "${lib.getExe' pkgs.wireplumber "wpctl"} set-sink-mute @DEFAULT_SINK@ toggle";
+            on-click = "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
             on-click-right = lib.getExe pkgs.pwvucontrol;
             on-click-middle = lib.getExe pkgs.helvum;
           };
