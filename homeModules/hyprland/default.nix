@@ -7,7 +7,7 @@
     ./apps.nix
     ./app-theme.nix
     ./blueman-applet.nix
-    ./clipman.nix
+    ./clipse.nix
     ./dunst.nix
     ./hypridle.nix
     ./hyprland.nix
@@ -33,7 +33,7 @@
       apps.defaultEnable = lib.mkDefault true;
       appTheme.enable = lib.mkDefault true;
       bluemanApplet.enable = lib.mkDefault true;
-      clipman.enable = lib.mkDefault true;
+      clipse.enable = lib.mkDefault true;
       dunst.enable = lib.mkDefault true;
       hypridle.enable = lib.mkDefault true;
       hyprlock.enable = lib.mkDefault true;

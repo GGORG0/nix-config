@@ -37,5 +37,9 @@
         enableZshIntegration = true;
       };
     };
+
+    wayland.windowManager.hyprland.settings.bind = [
+      "${config.ggorg.hyprland.mod}, return, exec, ${lib.getExe pkgs.kitty} --single-instance"
+    ];
   };
 }

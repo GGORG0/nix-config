@@ -18,7 +18,7 @@
       font = "JetBrainsMono Nerd Font Mono 14";
       terminal = lib.getExe config.programs.kitty.package;
 
-      plugins = with pkgs; [rofi-calc rofi-power-menu];
+      plugins = with pkgs; [rofi-calc];
 
       extraConfig = {
         show-icons = true;
@@ -29,15 +29,10 @@
 
         run-shell-command = "{terminal} --hold {cmd}";
 
-        display-drun = "   Apps ";
-        display-run = "   Run ";
-        display-power-menu = "   Power ";
+        display-drun = "Apps";
 
         modi = lib.strings.concatStringsSep "," [
-          "run"
           "drun"
-
-          "power-menu:${lib.getExe pkgs.rofi-power-menu}"
         ];
       };
 
@@ -54,7 +49,7 @@
           fg-col2 = mkLiteral "#f38ba8";
           grey = mkLiteral "#6c7086";
 
-          width = 600;
+          width = 650;
         };
 
         "element-text, element-icon , mode-switcher" = {
@@ -63,7 +58,7 @@
         };
 
         window = {
-          height = mkLiteral "360px";
+          height = mkLiteral "430px";
           border = mkLiteral "3px";
           border-color = mkLiteral "@border-col";
           border-radius = mkLiteral "20px";
@@ -106,7 +101,6 @@
           padding = mkLiteral "6px 0px 0px";
           margin = mkLiteral "10px 0px 0px 20px";
           columns = 2;
-          lines = 5;
           background-color = mkLiteral "@bg-col";
         };
 
@@ -158,6 +152,18 @@
       };
     };
 
-    xdg.configFile."rofimoji.rc".text = "action = copy";
+    xdg.configFile."rofimoji.rc".text = ''
+      action = copy
+      files = all
+    '';
+
+    wayland.windowManager.hyprland.settings.bind = let
+      inherit (config.ggorg.hyprland) mod;
+    in [
+      "${mod}, R, exec, ${lib.getExe config.programs.rofi.finalPackage} -show drun"
+      "${mod}, C, exec, ${lib.getExe config.programs.rofi.finalPackage} -modi calc -show calc -no-show-match -no-sort"
+      "${mod}, period, exec, ${lib.getExe config.programs.rofi.finalPackage} -modi \"emoji:${lib.getExe pkgs.rofimoji}\" -show emoji"
+      "${mod}, escape, exec, ${lib.getExe config.programs.rofi.finalPackage} -modi \"power-menu:${lib.getExe pkgs.rofi-power-menu}\" -show power-menu"
+    ];
   };
 }

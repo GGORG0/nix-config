@@ -10,6 +10,11 @@
         type = lib.types.listOf lib.types.str;
         description = "Monitors to configure, in Hyprland format";
       };
+      mod = lib.mkOption {
+        type = lib.types.str;
+        description = "Modifier key for keybinds";
+        default = "SUPER";
+      };
     };
   };
 
@@ -22,7 +27,7 @@
       systemd.enable = true;
 
       settings = let
-        mod = "SUPER";
+        inherit (config.ggorg.hyprland) mod;
       in {
         monitor =
           config.ggorg.hyprland.monitors
@@ -104,13 +109,17 @@
 
           vrr = 1;
 
+          focus_on_activate = true;
+          new_window_takes_over_fullscreen = 2;
+
           # just in case hypridle breaks... or something
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = true;
         };
 
         windowrule = [
-          "tile, class:Aseprite"
+          "tile, class:(Aseprite)"
+          "stayfocused, class:(gcr-prompter)"
         ];
 
         workspace =
@@ -125,22 +134,21 @@
           ((builtins.length config.ggorg.hyprland.monitors)
             * 10);
 
+        binds = {
+          scroll_event_delay = 0;
+          hide_special_on_workspace_change = true;
+        };
+
+        ecosystem.no_donation_nag = true;
+
         bind =
           [
             # Power/logout
             "${mod}, O, exec, ${lib.getExe' pkgs.systemd "loginctl"} lock-session"
 
             # App shortcuts
-            "${mod}, return, exec, ${lib.getExe pkgs.kitty} --single-instance"
             "${mod}, B, exec, ${lib.getExe pkgs.librewolf}"
             "${mod}, G, exec, ${lib.getExe pkgs.nemo-with-extensions}" # TODO: replace nemo with Yazi
-
-            # Rofi
-            "${mod}, R, exec, ${lib.getExe config.programs.rofi.finalPackage} -show drun"
-            # "${mod}, period, exec, ${lib.getExe config.programs.rofi.finalPackage} -show emoji"
-            # "${mod}, C, exec, ${lib.getExe config.programs.rofi.finalPackage} -show calc -no-show-match -no-sort"
-            "${mod}, escape, exec, ${lib.getExe config.programs.rofi.finalPackage} -show power-menu"
-            "${mod}, V, exec, ${lib.getExe pkgs.clipman} pick -t CUSTOM -T \"${lib.getExe config.programs.rofi.finalPackage} -dmenu -p '   Clipboard '\""
 
             # Dunst do not disturb toggle
             "${mod}, D, exec, ${lib.getExe' pkgs.dunst "dunstctl"} set-paused toggle"

@@ -39,6 +39,7 @@
             sort-by-name = true;
             format = "{id}";
             show-special = true;
+            move-to-monitor = true;
             on-scroll-up = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e+1";
             on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
           };
@@ -56,7 +57,7 @@
 
           clock = {
             interval = 1;
-            format = "{:L%H:%M:%S %a %d %b} ";
+            format = "{:L%H:%M:%S %a %d %b}";
             timezone = "Europe/Warsaw";
             locale = "pl_PL.UTF-8";
             tooltip-format = "<tt>{calendar}</tt>";
@@ -281,7 +282,7 @@
         #workspaces button {
           color: @lavender;
           background-color: transparent;
-          border-radius: 2rem;
+          border-radius: 10px;
           padding: 0.25rem;
           margin: 0.3rem 0;
 
@@ -299,6 +300,10 @@
         #workspaces button.active {
           color: @sky;
           background-color: @surface1;
+        }
+
+        #workspaces button.urgent {
+          color: @red;
         }
 
         #workspaces button:hover {

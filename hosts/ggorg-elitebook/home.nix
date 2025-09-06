@@ -86,8 +86,8 @@
     hyprland = {
       enable = true;
       monitors = [
-        "HDMI-A-1,2560x1440@144.00Hz,0x0,1"
-        "eDP-1,1920x1080@60,2560x0,1"
+        "desc:Lenovo Group Limited R27q-30 U533K7PF, 2560x1440@144.00Hz, 0x0, 1"
+        "eDP-1, 1920x1080@60, 2560x0, 1"
       ];
     };
     neovim.enable = true;
