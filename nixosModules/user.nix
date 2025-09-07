@@ -53,5 +53,11 @@
       openssh.authorizedKeys.keys = config.ggorg.user.authorizedKeys;
     };
     nix.settings.trusted-users = [config.ggorg.user.username];
+    security.sudo.extraConfig = ''
+      Defaults lecture = never
+      Defaults pwfeedback
+      Defaults timestamp_timeout = 300
+      Defaults passprompt = "[31m[ sudo] password for %p:[0m "
+    '';
   };
 }
