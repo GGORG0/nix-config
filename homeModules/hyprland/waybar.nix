@@ -32,6 +32,7 @@
           # --- LEFT MODULES ---
           modules-left = [
             "hyprland/workspaces"
+            "hyprland/windowcount"
             "hyprland/window"
           ];
 
@@ -42,6 +43,12 @@
             move-to-monitor = true;
             on-scroll-up = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e+1";
             on-scroll-down = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch workspace e-1";
+          };
+
+          "hyprland/windowcount" = {
+            format = "​";
+            format-fullscreen = "󰊓";
+            separate-outputs = true;
           };
 
           "hyprland/window" = {
@@ -134,7 +141,7 @@
             format = "{capacity}% {icon}";
             format-charging = "{capacity}% 󰂄";
             format-plugged = "{capacity}% ";
-            format-icons = ["󱃍" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹"];
+            format-icons = ["󱟩" "󱃍" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹"];
             tooltip-format = "{capacity}%\n{timeTo}\n{power} W";
           };
 
@@ -275,10 +282,6 @@
 
         /* --- LEFT MODULES --- */
 
-        #workspaces {
-          background-color: @surface0;
-        }
-
         #workspaces button {
           color: @lavender;
           background-color: transparent;
@@ -311,15 +314,15 @@
           background-color: @surface2;
         }
 
-        #window {
-          background-color: @surface0;
+        window#waybar:not(.fullscreen) #windowcount {
+          margin: 0;
+          padding: 0;
         }
 
         /* see https://github.com/Alexays/Waybar/wiki/Module:-Sway#style-1 */
         window#waybar.empty #window {
           margin: 0;
           padding: 0;
-          background: none;
         }
 
         /* --- CENTER MODULES --- */
