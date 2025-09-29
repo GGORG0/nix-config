@@ -123,6 +123,8 @@
 
           "noscreenshare, tag:noscreenshare"
           "bordercolor rgb(f38ba8), tag:noscreenshare"
+
+          "noinitialfocus,class:^jetbrains-.*$,floating:1,title:^$|^\\s$|^win\\d+$"
         ];
 
         workspace =
