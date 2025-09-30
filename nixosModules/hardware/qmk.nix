@@ -13,6 +13,15 @@
   config = lib.mkIf config.ggorg.hardware.qmk.enable {
     hardware.keyboard.qmk.enable = true; # udev rules
     ggorg.user.extraGroups = ["plugdev"];
-    environment.systemPackages = [pkgs.qmk];
+    environment.systemPackages = [
+      (pkgs.qmk.overridePythonAttrs
+        (old: {
+          propagatedBuildInputs =
+            old.propagatedBuildInputs or []
+            ++ [
+              pkgs.python3Packages.appdirs
+            ];
+        }))
+    ];
   };
 }
