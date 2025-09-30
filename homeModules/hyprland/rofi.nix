@@ -13,7 +13,6 @@
   config = {
     programs.rofi = {
       inherit (config.ggorg.hyprland.rofi) enable;
-      package = pkgs.rofi-wayland;
 
       font = "JetBrainsMono Nerd Font Mono 14";
       terminal = lib.getExe config.programs.kitty.package;

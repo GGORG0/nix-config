@@ -12,8 +12,8 @@
 
   config = lib.mkIf config.ggorg.development.python.enable {
     home.packages = with pkgs; [
-      python312Full
-      python312Packages.ipython
+      python3
+      python3Packages.ipython
     ];
   };
 }
