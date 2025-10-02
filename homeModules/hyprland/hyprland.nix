@@ -99,10 +99,14 @@
         };
 
         gestures = {
-          workspace_swipe = true;
           workspace_swipe_create_new = true;
           workspace_swipe_use_r = true;
         };
+
+        gesture = [
+          "3, horizontal, workspace"
+          "4, swipe, resize"
+        ];
 
         misc = {
           disable_hyprland_logo = true; # hyprpaper covers it
