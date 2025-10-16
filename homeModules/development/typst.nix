@@ -13,7 +13,7 @@
   config = lib.mkIf config.ggorg.development.typst.enable {
     home.packages = with pkgs; [
       typst
-      prettypst
+      typstyle
       typst-live
     ];
   };
