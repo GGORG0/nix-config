@@ -23,6 +23,7 @@
         rubik
         poppins
         ubuntu_font_family
+        quicksand
 
         twemoji-color-font
 
