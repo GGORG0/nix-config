@@ -27,6 +27,7 @@
       platformio.enable = true;
       power.enable = true;
       qmk.enable = true;
+      rtlsdr.enable = true;
       saleae.enable = true;
       sound.enable = true;
       wacom.enable = true;

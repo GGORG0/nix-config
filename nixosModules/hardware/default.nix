@@ -13,6 +13,7 @@
     ./platformio.nix
     ./power.nix
     ./qmk.nix
+    ./rtlsdr.nix
     ./saleae.nix
     ./sound.nix
     ./wacom.nix
